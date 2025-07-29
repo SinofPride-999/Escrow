@@ -1,0 +1,78 @@
+dashboard.html
+  User profile section
+
+  Balance overview
+
+  Quick transaction buttons
+
+  Recent transactions list
+
+  KYC verification section (if not completed)
+
+  Referral program status
+
+  Premium services up-sell
+
+
+transactions.html
+  Transaction creation form
+
+  Transaction history table with filters
+
+  Real-time status indicators
+
+  Blockchain transaction IDs with links to explorers
+
+  Export functionality
+
+
+marketplace.html
+  Freelance task listings grid
+
+  Search and filter options
+
+  Task creation form
+
+  User ratings and reviews
+
+  Escrow terms configuration
+
+
+disputes.html
+  Open disputes list
+
+  Dispute creation form
+
+  Evidence upload area
+
+  Messaging interface with the other party
+
+  Resolution status tracker
+
+
+education.html
+  Article categories
+
+  Featured security guides
+
+  Video tutorials
+
+  "Learn & Earn" quizzes
+
+  Security checklist downloads
+
+
+Implementation Notes
+  Responsive Design: The layout uses flexbox and grid with media queries to ensure perfect display on all devices.
+
+  Animations: All elements have subtle animations on hover, scroll, and state changes using CSS transitions and keyframes.
+
+  Theme System: The dark/light theme is implemented with CSS variables and localStorage persistence.
+
+  Simulated Backend: The auth.js file simulates user authentication and data persistence using localStorage.
+
+  Security Focus: The design incorporates cybersecurity elements like encryption badges, blockchain visualization, and security education.
+
+  Performance: Assets are optimized, and the loading overlay ensures a smooth initial experience.
+
+  Accessibility: Proper ARIA labels, semantic HTML, and keyboard navigation support.

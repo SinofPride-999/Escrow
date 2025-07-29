@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | SecureEscrow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/marketplace.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link active">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="user-dropdown">
+                    <button class="user-avatar">
+                        <img src="assets/user-avatar.jpg" alt="User Avatar">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link active">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li>
+                <div class="mobile-user-actions">
+                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Marketplace Main Content -->
+    <main class="marketplace-container">
+        <div class="container">
+            <!-- Marketplace Header -->
+            <div class="marketplace-header">
+                <h1 class="marketplace-title">Freelance Marketplace</h1>
+                <button class="btn btn-primary" id="createTaskBtn">
+                    <i class="fas fa-plus"></i> Create Task
+                </button>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="marketplace-filters">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for tasks, skills, or freelancers...">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category</label>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="web">Web Development</option>
+                            <option value="design">Design</option>
+                            <option value="writing">Writing</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="finance">Finance</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="priceFilter">Price Range</label>
+                        <select id="priceFilter">
+                            <option value="">Any Price</option>
+                            <option value="0-100">Under $100</option>
+                            <option value="100-500">$100 - $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000+">Over $1,000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="timeFilter">Delivery Time</label>
+                        <select id="timeFilter">
+                            <option value="">Any Time</option>
+                            <option value="1-3">1-3 Days</option>
+                            <option value="3-7">3-7 Days</option>
+                            <option value="7-14">1-2 Weeks</option>
+                            <option value="14+">Over 2 Weeks</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" id="resetFilters">Reset</button>
+                </div>
+            </div>
+
+            <!-- Task Listings Grid -->
+            <div class="task-listings">
+                <!-- Task Card 1 -->
+                <div class="task-card">
+                    <div class="task-badge featured">
+                        <i class="fas fa-star"></i> Featured
+                    </div>
+                    <div class="task-image">
+                        <img src="assets/web-dev.jpg" alt="Web Development">
+                    </div>
+                    <div class="task-content">
+                        <div class="task-meta">
+                            <span class="task-category">Web Development</span>
+                            <span class="task-time"><i class="far fa-clock"></i> 3-5 days</span>
+                        </div>
+                        <h3 class="task-title">Build a Secure Escrow Website</h3>
+                        <p class="task-description">Looking for an experienced web developer to build a secure escrow platform with blockchain integration.</p>
+                        <div class="task-skills">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Blockchain</span>
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-price">$1,200 - $1,800</div>
+                            <div class="task-rating">
+                                <i class="fas fa-star"></i> 4.9 (32)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-outline btn-sm">View Details</button>
+                        <button class="btn btn-primary btn-sm">Hire Now</button>
+                    </div>
+                </div>
+
+                <!-- Task Card 2 -->
+                <div class="task-card">
+                    <div class="task-image">
+                        <img src="assets/graphic-design.jpg" alt="Graphic Design">
+                    </div>
+                    <div class="task-content">
+                        <div class="task-meta">
+                            <span class="task-category">Graphic Design</span>
+                            <span class="task-time"><i class="far fa-clock"></i> 1-3 days</span>
+                        </div>
+                        <h3 class="task-title">Design a Crypto Wallet Logo</h3>
+                        <p class="task-description">Need a professional logo design for a new cryptocurrency wallet application.</p>
+                        <div class="task-skills">
+                            <span class="skill-tag">Logo Design</span>
+                            <span class="skill-tag">Illustrator</span>
+                            <span class="skill-tag">Branding</span>
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-price">$150 - $300</div>
+                            <div class="task-rating">
+                                <i class="fas fa-star"></i> 4.8 (24)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-outline btn-sm">View Details</button>
+                        <button class="btn btn-primary btn-sm">Hire Now</button>
+                    </div>
+                </div>
+
+                <!-- Task Card 3 -->
+                <div class="task-card">
+                    <div class="task-image">
+                        <img src="assets/content-writing.jpg" alt="Content Writing">
+                    </div>
+                    <div class="task-content">
+                        <div class="task-meta">
+                            <span class="task-category">Content Writing</span>
+                            <span class="task-time"><i class="far fa-clock"></i> 5-7 days</span>
+                        </div>
+                        <h3 class="task-title">Blockchain Whitepaper Writer</h3>
+                        <p class="task-description">Seeking a technical writer with blockchain knowledge to create a whitepaper for our new project.</p>
+                        <div class="task-skills">
+                            <span class="skill-tag">Technical Writing</span>
+                            <span class="skill-tag">Blockchain</span>
+                            <span class="skill-tag">Research</span>
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-price">$500 - $1,000</div>
+                            <div class="task-rating">
+                                <i class="fas fa-star"></i> 4.7 (18)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-outline btn-sm">View Details</button>
+                        <button class="btn btn-primary btn-sm">Hire Now</button>
+                    </div>
+                </div>
+
+                <!-- Task Card 4 -->
+                <div class="task-card">
+                    <div class="task-badge urgent">
+                        <i class="fas fa-bolt"></i> Urgent
+                    </div>
+                    <div class="task-image">
+                        <img src="assets/marketing.jpg" alt="Digital Marketing">
+                    </div>
+                    <div class="task-content">
+                        <div class="task-meta">
+                            <span class="task-category">Digital Marketing</span>
+                            <span class="task-time"><i class="far fa-clock"></i> 1-2 weeks</span>
+                        </div>
+                        <h3 class="task-title">Crypto Project Marketing</h3>
+                        <p class="task-description">Need a marketing specialist to promote our new DeFi platform across social media and crypto communities.</p>
+                        <div class="task-skills">
+                            <span class="skill-tag">Social Media</span>
+                            <span class="skill-tag">Crypto</span>
+                            <span class="skill-tag">SEO</span>
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-price">$800 - $1,500</div>
+                            <div class="task-rating">
+                                <i class="fas fa-star"></i> 4.9 (41)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-outline btn-sm">View Details</button>
+                        <button class="btn btn-primary btn-sm">Hire Now</button>
+                    </div>
+                </div>
+
+                <!-- Task Card 5 -->
+                <div class="task-card">
+                    <div class="task-image">
+                        <img src="assets/mobile-dev.jpg" alt="Mobile Development">
+                    </div>
+                    <div class="task-content">
+                        <div class="task-meta">
+                            <span class="task-category">Mobile Development</span>
+                            <span class="task-time"><i class="far fa-clock"></i> 2-3 weeks</span>
+                        </div>
+                        <h3 class="task-title">Build a Secure Wallet App</h3>
+                        <p class="task-description">Looking for a mobile developer to create a secure cryptocurrency wallet for iOS and Android.</p>
+                        <div class="task-skills">
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">Blockchain</span>
+                            <span class="skill-tag">Security</span>
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-price">$2,500 - $4,000</div>
+                            <div class="task-rating">
+                                <i class="fas fa-star"></i> 5.0 (28)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-outline btn-sm">View Details</button>
+                        <button class="btn btn-primary btn-sm">Hire Now</button>
+                    </div>
+                </div>
+
+                <!-- Task Card 6 -->
+                <div class="task-card">
+                    <div class="task-image">
+                        <img src="assets/cybersecurity.jpg" alt="Cybersecurity">
+                    </div>
+                    <div class="task-content">
+                        <div class="task-meta">
+                            <span class="task-category">Cybersecurity</span>
+                            <span class="task-time"><i class="far fa-clock"></i> 1 week</span>
+                        </div>
+                        <h3 class="task-title">Smart Contract Audit</h3>
+                        <p class="task-description">Need an experienced blockchain developer to audit our smart contracts for security vulnerabilities.</p>
+                        <div class="task-skills">
+                            <span class="skill-tag">Solidity</span>
+                            <span class="skill-tag">Security</span>
+                            <span class="skill-tag">Ethereum</span>
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-price">$1,500 - $2,500</div>
+                            <div class="task-rating">
+                                <i class="fas fa-star"></i> 4.9 (37)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-outline btn-sm">View Details</button>
+                        <button class="btn btn-primary btn-sm">Hire Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn disabled">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">4</button>
+                <button class="pagination-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/logo-white.svg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2023 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Create Task Modal -->
+    <div class="modal" id="createTaskModal">
+        <div class="modal-content large">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Create New Task</h2>
+            <form class="task-form">
+                <div class="form-section">
+                    <h3 class="section-title">Task Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskTitle">Task Title*</label>
+                            <input type="text" id="taskTitle" placeholder="e.g. Build a Secure Website" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskCategory">Category*</label>
+                            <select id="taskCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="web">Web Development</option>
+                                <option value="design">Design</option>
+                                <option value="writing">Writing</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="finance">Finance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description*</label>
+                        <textarea id="taskDescription" placeholder="Describe your task in detail..." required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskSkills">Required Skills</label>
+                            <div class="skills-input">
+                                <input type="text" id="taskSkills" placeholder="Add skills...">
+                                <div class="skills-tags">
+                                    <!-- Added tags will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskBudget">Budget Range*</label>
+                            <div class="budget-input">
+                                <input type="number" id="taskBudgetMin" placeholder="Min" required>
+                                <span>to</span>
+                                <input type="number" id="taskBudgetMax" placeholder="Max" required>
+                                <select id="taskCurrency">
+                                    <option>USD</option>
+                                    <option>EUR</option>
+                                    <option>BTC</option>
+                                    <option>ETH</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskTimeline">Delivery Timeline*</label>
+                            <select id="taskTimeline" required>
+                                <option value="">Select Timeline</option>
+                                <option value="1-3">1-3 Days</option>
+                                <option value="3-7">3-7 Days</option>
+                                <option value="7-14">1-2 Weeks</option>
+                                <option value="14-30">2-4 Weeks</option>
+                                <option value="30+">1+ Months</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskVisibility">Visibility</label>
+                            <select id="taskVisibility">
+                                <option value="public">Public (Visible to all)</option>
+                                <option value="private">Private (Invite only)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Escrow Terms</h3>
+                    <div class="form-group">
+                        <label for="escrowAmount">Escrow Amount*</label>
+                        <div class="input-group">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="escrowAmount" placeholder="0.00" required>
+                            <select class="input-suffix">
+                                <option>USD</option>
+                                <option>EUR</option>
+                                <option>BTC</option>
+                                <option>ETH</option>
+                            </select>
+                        </div>
+                        <p class="form-hint">This amount will be held in escrow until task completion</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="milestones">Payment Milestones (Optional)</label>
+                        <div class="milestones-container">
+                            <div class="milestone-item">
+                                <input type="text" placeholder="Milestone description">
+                                <input type="number" placeholder="Amount">
+                                <button type="button" class="btn btn-sm btn-outline remove-milestone">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <button type="button" class="btn btn-outline btn-sm" id="addMilestone">
+                                <i class="fas fa-plus"></i> Add Milestone
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="completionTerms">Completion Terms*</label>
+                        <textarea id="completionTerms" placeholder="Define clear conditions for releasing escrow funds..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="disputeResolution">Dispute Resolution Process</label>
+                        <textarea id="disputeResolution" placeholder="Describe how disputes will be resolved..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Freelancer Requirements</h3>
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="requireKYC">
+                            <span class="checkmark"></span>
+                            Require KYC Verified Freelancers
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="minRating">Minimum Rating (Optional)</label>
+                        <div class="rating-select">
+                            <select id="minRating">
+                                <option value="0">Any Rating</option>
+                                <option value="3">3+ Stars</option>
+                                <option value="4">4+ Stars</option>
+                                <option value="4.5">4.5+ Stars</option>
+                            </select>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="minCompleted">Minimum Completed Tasks (Optional)</label>
+                        <select id="minCompleted">
+                            <option value="0">Any</option>
+                            <option value="5">5+ Tasks</option>
+                            <option value="10">10+ Tasks</option>
+                            <option value="20">20+ Tasks</option>
+                            <option value="50">50+ Tasks</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolioRequired">Portfolio Requirements</label>
+                        <textarea id="portfolioRequired" placeholder="Specify any portfolio or sample work requirements..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Task Details Modal -->
+    <div class="modal" id="taskDetailsModal">
+        <div class="modal-content large">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="task-details-header">
+                <div class="task-meta">
+                    <span class="task-category">Web Development</span>
+                    <span class="task-time"><i class="far fa-clock"></i> 3-5 days</span>
+                </div>
+                <h2 class="task-title">Build a Secure Escrow Website</h2>
+                <div class="task-author">
+                    <img src="assets/user-avatar.jpg" alt="Author" class="author-avatar">
+                    <div class="author-info">
+                        <h4 class="author-name">Alex Johnson</h4>
+                        <div class="author-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.7 (24 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-details-content">
+                <div class="details-main">
+                    <div class="details-section">
+                        <h3 class="section-title">Task Description</h3>
+                        <div class="task-description">
+                            <p>I'm looking for an experienced web developer to build a secure escrow platform with blockchain integration. The website should have the following features:</p>
+                            <ul>
+                                <li>User authentication with 2FA</li>
+                                <li>Escrow transaction management</li>
+                                <li>Blockchain integration for transaction records</li>
+                                <li>Real-time transaction tracking</li>
+                                <li>Dispute resolution system</li>
+                                <li>Admin dashboard</li>
+                            </ul>
+                            <p>The design should be modern and responsive, following our brand guidelines which will be provided. The backend should be built with security as the top priority.</p>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="section-title">Skills Required</h3>
+                        <div class="task-skills">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Blockchain</span>
+                            <span class="skill-tag">Security</span>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="section-title">Escrow Terms</h3>
+                        <div class="escrow-terms">
+                            <div class="term-item">
+                                <div class="term-label">Escrow Amount</div>
+                                <div class="term-value">$1,500.00 USD</div>
+                            </div>
+                            <div class="term-item">
+                                <div class="term-label">Payment Release</div>
+                                <div class="term-value">Upon completion and approval of all features</div>
+                            </div>
+                            <div class="term-item">
+                                <div class="term-label">Dispute Resolution</div>
+                                <div class="term-value">Mediation by SecureEscrow team if needed</div>
+                            </div>
+                            <div class="term-item">
+                                <div class="term-label">Completion Deadline</div>
+                                <div class="term-value">14 days from acceptance</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="section-title">Freelancer Reviews</h3>
+                        <div class="reviews-list">
+                            <!-- Review 1 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="assets/user1.jpg" alt="Reviewer" class="reviewer-avatar">
+                                    <div class="reviewer-info">
+                                        <h4 class="reviewer-name">Sarah Miller</h4>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="review-date">2 weeks ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Alex delivered an excellent escrow platform that met all our requirements. The code was clean and well-documented, and he implemented all the security features we requested. Would definitely work with him again!</p>
+                                </div>
+                            </div>
+
+                            <!-- Review 2 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <img src="assets/user2.jpg" alt="Reviewer" class="reviewer-avatar">
+                                    <div class="reviewer-info">
+                                        <h4 class="reviewer-name">Michael Chen</h4>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="review-date">1 month ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Great work on our blockchain integration. Alex was professional and met all deadlines. The only minor issue was some delays in communication, but the final product was worth it.</p>
+                                </div>
+                            </div>
+
+                            <!-- Review Form -->
+                            <div class="review-form">
+                                <h4>Leave a Review</h4>
+                                <div class="rating-input">
+                                    <span>Your Rating:</span>
+                                    <div class="stars">
+                                        <i class="far fa-star" data-rating="1"></i>
+                                        <i class="far fa-star" data-rating="2"></i>
+                                        <i class="far fa-star" data-rating="3"></i>
+                                        <i class="far fa-star" data-rating="4"></i>
+                                        <i class="far fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <textarea placeholder="Share your experience..."></textarea>
+                                <button class="btn btn-primary">Submit Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-sidebar">
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">Task Summary</h3>
+                        <div class="task-price">$1,200 - $1,800</div>
+                        <div class="task-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Posted: 2 days ago</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Freelance</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block">Hire Now</button>
+                        <button class="btn btn-outline btn-block">Save for Later</button>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">About the Client</h3>
+                        <div class="client-info">
+                            <img src="assets/user-avatar.jpg" alt="Client" class="client-avatar">
+                            <div class="client-details">
+                                <h4 class="client-name">Alex Johnson</h4>
+                                <div class="client-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9 (15 reviews)</span>
+                                </div>
+                                <div class="client-meta">
+                                    <span><i class="fas fa-user-shield"></i> Verified</span>
+                                    <span><i class="fas fa-check-circle"></i> Payment Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">87%</div>
+                                <div class="stat-label">Completion Rate</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Tasks Posted</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">Safety Tips</h3>
+                        <ul class="safety-tips">
+                            <li><i class="fas fa-check-circle"></i> Always use SecureEscrow for payments</li>
+                            <li><i class="fas fa-check-circle"></i> Never share personal financial information</li>
+                            <li><i class="fas fa-check-circle"></i> Check freelancer ratings and reviews</li>
+                            <li><i class="fas fa-check-circle"></i> Define clear milestones and deliverables</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/marketplace.js"></script>
+</body>
+</html>
