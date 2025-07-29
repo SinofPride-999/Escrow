@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SecureEscrow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="user-dropdown">
+                    <button class="user-avatar">
+                        <img src="assets/user-avatar.jpg" alt="User Avatar">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link active">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li>
+                <div class="mobile-user-actions">
+                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-container">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <div class="dashboard-actions">
+                    <button class="btn btn-outline"><i class="fas fa-bell"></i></button>
+                    <button class="btn btn-outline"><i class="fas fa-question-circle"></i> Help</button>
+                    <button class="btn btn-primary" id="newTransactionBtn">
+                        <i class="fas fa-plus"></i> New Transaction
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- User Profile Section -->
+                <section class="dashboard-card profile-card">
+                    <div class="card-header">
+                        <h2 class="card-title">User Profile</h2>
+                        <button class="card-action"><i class="fas fa-edit"></i> Edit</button>
+                    </div>
+                    <div class="profile-content">
+                        <div class="profile-avatar">
+                            <img src="assets/user-avatar.jpg" alt="User Avatar">
+                            <div class="verification-badge">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-name">Alex Johnson</h3>
+                            <p class="profile-email">alex.johnson@example.com</p>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">87%</div>
+                                    <div class="stat-label">Trust Score</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">24</div>
+                                    <div class="stat-label">Transactions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-footer">
+                        <div class="profile-meta">
+                            <span><i class="fas fa-user-shield"></i> KYC Verified</span>
+                            <span><i class="fas fa-calendar-alt"></i> Member since 2022</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Balance Overview -->
+                <section class="dashboard-card balance-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Balance Overview</h2>
+                        <button class="card-action"><i class="fas fa-exchange-alt"></i> Transfer</button>
+                    </div>
+                    <div class="balance-content">
+                        <div class="balance-main">
+                            <div class="balance-amount">$4,892.50</div>
+                            <div class="balance-change positive">
+                                <i class="fas fa-arrow-up"></i> 12.5% from last month
+                            </div>
+                        </div>
+                        <div class="balance-details">
+                            <div class="detail-item">
+                                <div class="detail-label">In Escrow</div>
+                                <div class="detail-value">$1,250.00</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Available</div>
+                                <div class="detail-value">$3,642.50</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="balance-footer">
+                        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Withdraw</button>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-upload"></i> Deposit</button>
+                    </div>
+                </section>
+
+                <!-- Quick Transaction Buttons -->
+                <section class="dashboard-card quick-actions-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <span>Send Money</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <span>Receive</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <span>Create Link</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <span>Request</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <span>Exchange</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <span>Crypto</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Recent Transactions -->
+                <section class="dashboard-card transactions-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Transactions</h2>
+                        <button class="card-action">View All</button>
+                    </div>
+                    <div class="transactions-list">
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-down success"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Payment Received</h3>
+                                <p class="transaction-meta">From: Jane Smith • Today, 10:45 AM</p>
+                            </div>
+                            <div class="transaction-amount success">
+                                +$1,250.00
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-up danger"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Escrow Payment</h3>
+                                <p class="transaction-meta">To: WebDev Pros • Yesterday, 2:30 PM</p>
+                            </div>
+                            <div class="transaction-amount danger">
+                                -$750.00
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Currency Exchange</h3>
+                                <p class="transaction-meta">BTC to USD • Mar 12, 3:15 PM</p>
+                            </div>
+                            <div class="transaction-amount">
+                                +$1,842.50
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-down success"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Escrow Release</h3>
+                                <p class="transaction-meta">Project Completion • Mar 10, 9:20 AM</p>
+                            </div>
+                            <div class="transaction-amount success">
+                                +$2,500.00
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- KYC Verification Section -->
+                <section class="dashboard-card kyc-card" id="kycSection">
+                    <div class="card-header">
+                        <h2 class="card-title">Identity Verification</h2>
+                        <div class="verification-status verified">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </div>
+                    </div>
+                    <div class="kyc-content">
+                        <div class="kyc-progress">
+                            <div class="progress-steps">
+                                <div class="step completed">
+                                    <div class="step-number">1</div>
+                                    <div class="step-info">
+                                        <h4>Basic Information</h4>
+                                        <p>Name, address, and contact details</p>
+                                    </div>
+                                </div>
+                                <div class="step completed">
+                                    <div class="step-number">2</div>
+                                    <div class="step-info">
+                                        <h4>ID Document</h4>
+                                        <p>Passport or driver's license</p>
+                                    </div>
+                                </div>
+                                <div class="step completed">
+                                    <div class="step-number">3</div>
+                                    <div class="step-info">
+                                        <h4>Selfie Verification</h4>
+                                        <p>Photo with your ID document</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kyc-benefits">
+                            <h3>Verification Benefits</h3>
+                            <ul class="benefits-list">
+                                <li><i class="fas fa-check"></i> Higher transaction limits</li>
+                                <li><i class="fas fa-check"></i> Faster withdrawals</li>
+                                <li><i class="fas fa-check"></i> Access to premium features</li>
+                                <li><i class="fas fa-check"></i> Increased trust score</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="kyc-footer">
+                        <button class="btn btn-outline" disabled>
+                            <i class="fas fa-check"></i> Verification Complete
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Referral Program -->
+                <section class="dashboard-card referral-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Referral Program</h2>
+                    </div>
+                    <div class="referral-content">
+                        <div class="referral-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">Friends Joined</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">$125</div>
+                                <div class="stat-label">Earned</div>
+                            </div>
+                        </div>
+                        <div class="referral-info">
+                            <h3>Invite friends & earn $25 each</h3>
+                            <p>Share your referral link and earn rewards when your friends sign up and complete their first transaction.</p>
+                        </div>
+                        <div class="referral-link">
+                            <input type="text" value="https://secureescrow.com/ref/alexj" readonly>
+                            <button class="btn btn-sm"><i class="fas fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                    <div class="referral-footer">
+                        <button class="btn btn-primary"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </section>
+
+                <!-- Premium Services -->
+                <section class="dashboard-card premium-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Premium Services</h2>
+                    </div>
+                    <div class="premium-content">
+                        <div class="premium-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Basic Plan</span>
+                        </div>
+                        <div class="premium-features">
+                            <h3>Upgrade for More Benefits</h3>
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i> Lower transaction fees (0.5%)</li>
+                                <li><i class="fas fa-check"></i> Priority customer support</li>
+                                <li><i class="fas fa-check"></i> Advanced security features</li>
+                                <li><i class="fas fa-check"></i> Exclusive marketplace access</li>
+                            </ul>
+                        </div>
+                        <div class="premium-plans">
+                            <div class="plan-option">
+                                <h4>Basic</h4>
+                                <div class="plan-price">Free</div>
+                                <ul class="plan-features">
+                                    <li>1.5% fees</li>
+                                    <li>Standard support</li>
+                                </ul>
+                            </div>
+                            <div class="plan-option recommended">
+                                <div class="recommended-badge">Recommended</div>
+                                <h4>Pro</h4>
+                                <div class="plan-price">$9.99<span>/month</span></div>
+                                <ul class="plan-features">
+                                    <li>0.5% fees</li>
+                                    <li>Priority support</li>
+                                    <li>Advanced security</li>
+                                </ul>
+                                <button class="btn btn-sm btn-outline">Current Plan</button>
+                            </div>
+                            <div class="plan-option">
+                                <h4>Business</h4>
+                                <div class="plan-price">$29.99<span>/month</span></div>
+                                <ul class="plan-features">
+                                    <li>0.25% fees</li>
+                                    <li>24/7 support</li>
+                                    <li>Team accounts</li>
+                                    <li>API access</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="premium-footer">
+                        <button class="btn btn-primary">Upgrade Plan</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/logo-white.svg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2023 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- New Transaction Modal -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">New Secure Transaction</h2>
+            <form class="transaction-form">
+                <div class="form-group">
+                    <label for="transactionType">Transaction Type</label>
+                    <select id="transactionType" required>
+                        <option value="">Select transaction type</option>
+                        <option value="goods">Goods Purchase</option>
+                        <option value="services">Services</option>
+                        <option value="freelance">Freelance Work</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transactionAmount">Amount</label>
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="transactionAmount" placeholder="0.00" required>
+                        <select class="input-suffix">
+                            <option>USD</option>
+                            <option>EUR</option>
+                            <option>BTC</option>
+                            <option>ETH</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipientEmail">Recipient Email</label>
+                    <input type="email" id="recipientEmail" placeholder="recipient@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="transactionDescription">Description</label>
+                    <textarea id="transactionDescription" placeholder="Brief description of the transaction"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="escrowTerms">Escrow Terms</label>
+                    <textarea id="escrowTerms" placeholder="Conditions for releasing funds"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Transaction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
