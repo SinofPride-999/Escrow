@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- Loading Overlay -->
-    <div class="loading-overlay">
+    <!-- <div class="loading-overlay">
         <div class="loading-spinner">
             <div class="blockchain-animation">
                 <div class="block"></div>
@@ -21,7 +21,7 @@
             </div>
             <p>Securing Connection...</p>
         </div>
-    </div>
+    </div> -->
 
     <!-- Header -->
     <header class="main-header">
@@ -44,10 +44,10 @@
             </nav>
             
             <div class="header-actions">
-                <button class="theme-toggle" aria-label="Toggle dark mode">
+                <!-- <button class="theme-toggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
-                </button>
+                </button> -->
                 <div class="user-dropdown">
                     <button class="user-avatar">
                         <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="User Avatar">
@@ -74,16 +74,15 @@
             </button>
         </div>
         <ul class="mobile-nav-list">
-            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-            <li><a href="dashboard.html" class="mobile-nav-link active">Dashboard</a></li>
-            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
-            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
-            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+            <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="nav-link">Education</a></li>
+            <li><a href="disputes.html" class="nav-link">Disputes</a></li>
             <li>
-                <div class="mobile-user-actions">
-                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
-                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
-                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <div class="mobile-auth-buttons">
+                    <button class="btn btn-outline auth-btn mobile-login-btn">Login</button>
+                    <button class="btn btn-primary auth-btn mobile-signup-btn">Sign Up</button>
                 </div>
             </li>
         </ul>

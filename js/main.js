@@ -17,7 +17,7 @@ const signupPassword = document.getElementById('signupPassword');
 const passwordStrengthMeter = document.querySelector('.strength-meter');
 const passwordStrengthText = document.querySelector('.strength-text span');
 const navLinks = document.querySelectorAll('.nav-link');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-list .nav-link'); // Fixed selector
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a'); // Fixed selector
 const mobileLoginBtn = document.querySelector('.mobile-login-btn');
 const mobileSignupBtn = document.querySelector('.mobile-signup-btn');
 
@@ -28,6 +28,8 @@ console.log('Login Button:', loginBtn);
 console.log('Signup Button:', signupBtn);
 console.log('Auth Modal:', authModal);
 console.log('Auth Modal Close Button:', authModalClose);
+console.log('Mobile Menu Toggle:', mobileMenuToggle);
+console.log('Mobile Menu:', mobileMenu);
 
 // Current page
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -70,20 +72,30 @@ function simulateLoading() {
 
 // Mobile Menu
 function toggleMobileMenu() {
+    console.log('Toggle mobile menu called');
+    
+    if (!mobileMenu || !mobileMenuToggle) {
+        console.error('Mobile menu elements not found');
+        return;
+    }
+    
     const isOpen = mobileMenu.classList.contains('active');
+    console.log('Menu is currently:', isOpen ? 'open' : 'closed');
     
     // Toggle menu
     mobileMenu.classList.toggle('active');
-    body.classList.toggle('menu-open');
+    document.body.classList.toggle('menu-open');
     
     // Toggle the menu icon
     const icon = mobileMenuToggle.querySelector('i');
-    if (!isOpen) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+    if (icon) {
+        if (!isOpen) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     }
 }
 
@@ -199,7 +211,7 @@ function togglePasswordVisibility(input, button) {
 function setActiveNavLink() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-list');
     
     window.addEventListener('scroll', () => {
         let current = '';
@@ -319,6 +331,21 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (mobileMenuClose) {
         mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Only add auth modal listeners if elements exist
+    if (authModal && authModalClose) {
+        authModalClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeAuthModal();
+        });
+        
+        // Close modal when clicking outside
+        authModal.addEventListener('click', (e) => {
+            if (e.target === authModal) {
+                closeAuthModal();
+            }
+        });
     }
     
     // Auth buttons
