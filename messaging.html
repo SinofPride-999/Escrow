@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureEscrow | Secure Messaging</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/messaging.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                    <li><a href="messaging.html" class="nav-link active">Messages</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="btn btn-outline auth-btn" id="loginBtn">Login</button>
+                <button class="btn btn-primary auth-btn" id="signupBtn">Sign Up</button>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li><a href="messaging.html" class="mobile-nav-link active">Messages</a></li>
+            <li>
+                <div class="mobile-auth-buttons">
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Messaging Container -->
+    <main class="container">
+        <div class="messaging-container">
+            <!-- Conversation List -->
+            <div class="conversation-list">
+                <div class="conversation-header">
+                    <h2>Messages</h2>
+                    <button class="btn btn-outline btn-sm" id="newMessageBtn">
+                        <i class="fas fa-plus"></i> New
+                    </button>
+                </div>
+                
+                <div class="conversation-search">
+                    <input type="text" class="search-input" placeholder="Search conversations...">
+                </div>
+                
+                <div class="conversations">
+                    <!-- Conversation items will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <div class="chat-user-info">
+                        <h3 class="chat-user-name">Select a conversation</h3>
+                        <div class="chat-user-status">Secure end-to-end encrypted</div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn" title="User details">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        <button class="chat-action-btn" title="Security details">
+                            <i class="fas fa-shield-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="messages-container">
+                    <!-- Messages will be dynamically inserted here -->
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>No conversation selected</h3>
+                        <p>Select a conversation from the list or start a new one</p>
+                        <button class="btn btn-primary" id="emptyNewMessageBtn">
+                            <i class="fas fa-plus"></i> New Message
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="message-input-container" style="display: none;">
+                    <div class="attachment-options">
+                        <button class="attachment-btn" title="Attach image" data-type="image">
+                            <i class="fas fa-image"></i>
+                        </button>
+                        <button class="attachment-btn" title="Attach document" data-type="document">
+                            <i class="fas fa-file-alt"></i>
+                        </button>
+                        <button class="attachment-btn" title="Insert emoji" id="emojiPickerBtn">
+                            <i class="far fa-smile"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="message-input-wrapper">
+                        <textarea class="message-input" placeholder="Type your secure message..."></textarea>
+                        <button class="send-btn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Emoji Picker -->
+    <div class="emoji-picker-container">
+        <div class="emoji-categories">
+            <!-- Emoji categories will be inserted here -->
+        </div>
+        <div class="emoji-grid">
+            <!-- Emojis will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Edit Message Modal -->
+    <div class="edit-message-modal">
+        <div class="edit-message-content">
+            <button class="edit-message-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="edit-message-title">Edit Message</h3>
+            <textarea class="edit-message-input" placeholder="Edit your message..."></textarea>
+            <div class="edit-message-actions">
+                <button class="btn btn-outline" id="cancelEditBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Message Modal -->
+    <div class="auth-modal" id="newMessageModal">
+        <div class="auth-modal-content">
+            <button class="auth-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="section-title">New <span class="gold-text">Message</span></h2>
+            <p class="section-subtitle">Start a secure conversation with another user</p>
+            
+            <div class="form-group">
+                <label for="recipientSearch">Search User</label>
+                <input type="text" id="recipientSearch" placeholder="Search by name or email...">
+                <div class="search-results">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="initialMessage">Initial Message</label>
+                <textarea id="initialMessage" placeholder="Type your initial message..."></textarea>
+            </div>
+            
+            <button class="btn btn-primary btn-block" id="startConversationBtn">
+                Start Secure Conversation
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/messaging.js"></script>
+</body>
+</html>
