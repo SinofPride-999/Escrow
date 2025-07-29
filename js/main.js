@@ -18,6 +18,8 @@ const passwordStrengthMeter = document.querySelector('.strength-meter');
 const passwordStrengthText = document.querySelector('.strength-text span');
 const navLinks = document.querySelectorAll('.nav-link');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-list .nav-link'); // Fixed selector
+const mobileLoginBtn = document.querySelector('.mobile-login-btn');
+const mobileSignupBtn = document.querySelector('.mobile-signup-btn');
 
 
 console.log('Mobile Menu Toggle:', mobileMenuToggle);
@@ -25,7 +27,7 @@ console.log('Mobile Menu:', mobileMenu);
 console.log('Login Button:', loginBtn);
 console.log('Signup Button:', signupBtn);
 console.log('Auth Modal:', authModal);
-
+console.log('Auth Modal Close Button:', authModalClose);
 
 // Current page
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -108,8 +110,10 @@ function openAuthModal(formType = 'login') {
 }
 
 function closeAuthModal() {
-    authModal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (authModal) {
+        authModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
 // Close modal when clicking outside
@@ -324,6 +328,27 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (signupBtn) {
         signupBtn.addEventListener('click', () => openAuthModal('signup'));
+    }
+
+    if (mobileLoginBtn) {
+        mobileLoginBtn.addEventListener('click', () => {
+            toggleMobileMenu();
+            openAuthModal('login');
+        });
+    }
+
+    if (mobileSignupBtn) {
+        mobileSignupBtn.addEventListener('click', () => {
+            toggleMobileMenu();
+            openAuthModal('signup');
+        });
+    }
+
+    if (authModalClose) {
+        authModalClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeAuthModal();
+        });
     }
     
     // Only run these on the home page
