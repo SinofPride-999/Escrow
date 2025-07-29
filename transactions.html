@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions | SecureEscrow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/transactions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="transactions.html" class="nav-link active">Transactions</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="user-dropdown">
+                    <button class="user-avatar">
+                        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="User Avatar">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+            <li><a href="transactions.html" class="mobile-nav-link active">Transactions</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li>
+                <div class="mobile-user-actions">
+                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Transactions Main Content -->
+    <main class="transactions-container">
+        <div class="container">
+            <!-- Transactions Header -->
+            <div class="transactions-header">
+                <h1 class="transactions-title">Transaction Management</h1>
+                <div class="transactions-actions">
+                    <button class="btn btn-outline" id="exportBtn">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                    <button class="btn btn-primary" id="newTransactionBtn">
+                        <i class="fas fa-plus"></i> New Transaction
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transactions Grid -->
+            <div class="transactions-grid">
+                <!-- Transaction Creation Form -->
+                <section class="transactions-card create-transaction-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Create New Transaction</h2>
+                    </div>
+                    <form class="transaction-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="transactionType">Transaction Type</label>
+                                <select id="transactionType" required>
+                                    <option value="">Select type</option>
+                                    <option value="escrow">Escrow Payment</option>
+                                    <option value="direct">Direct Payment</option>
+                                    <option value="recurring">Recurring Payment</option>
+                                    <option value="crypto">Crypto Transfer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="transactionAmount">Amount</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="transactionAmount" placeholder="0.00" required>
+                                    <select class="input-suffix">
+                                        <option>USD</option>
+                                        <option>EUR</option>
+                                        <option>BTC</option>
+                                        <option>ETH</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="recipientEmail">Recipient Email</label>
+                                <input type="email" id="recipientEmail" placeholder="recipient@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="transactionReference">Reference</label>
+                                <input type="text" id="transactionReference" placeholder="Invoice # or description">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="transactionDescription">Description</label>
+                            <textarea id="transactionDescription" placeholder="Transaction details (optional)" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="escrowTerms">Escrow Terms (if applicable)</label>
+                            <textarea id="escrowTerms" placeholder="Conditions for releasing funds" rows="2"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-outline">Clear</button>
+                            <button type="submit" class="btn btn-primary">Create Transaction</button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Transaction History -->
+                <section class="transactions-card history-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Transaction History</h2>
+                        <div class="history-filter">
+                            <div class="filter-group">
+                                <label for="timeFilter">Time:</label>
+                                <select id="timeFilter">
+                                    <option value="all">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="year">This Year</option>
+                                    <option value="custom">Custom Range</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="statusFilter">Status:</label>
+                                <select id="statusFilter">
+                                    <option value="all">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="failed">Failed</option>
+                                    <option value="refunded">Refunded</option>
+                                    <option value="disputed">Disputed</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="typeFilter">Type:</label>
+                                <select id="typeFilter">
+                                    <option value="all">All Types</option>
+                                    <option value="escrow">Escrow</option>
+                                    <option value="direct">Direct</option>
+                                    <option value="recurring">Recurring</option>
+                                    <option value="crypto">Crypto</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-sm btn-outline" id="applyFilters">
+                                <i class="fas fa-filter"></i> Apply
+                            </button>
+                        </div>
+                    </div>
+                    <div class="history-content">
+                        <div class="table-responsive">
+                            <table class="transactions-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Recipient</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Blockchain ID</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Transaction 1 -->
+                                    <tr>
+                                        <td>#TXN-78945</td>
+                                        <td>Mar 18, 2025<br><span class="time">10:45 AM</span></td>
+                                        <td>
+                                            <div class="recipient-info">
+                                                <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg" alt="WebDev Pros">
+                                                WebDev Pros
+                                            </div>
+                                        </td>
+                                        <td>Website development escrow</td>
+                                        <td class="amount positive">+$750.00</td>
+                                        <td>
+                                            <div class="status-badge pending">
+                                                <i class="fas fa-clock"></i> Pending
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="https://etherscan.io/tx/0x4a7b8...e3f2a" target="_blank" class="blockchain-link">
+                                                <i class="fas fa-link"></i> 0x4a7b8...e3f2a
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Cancel">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Transaction 2 -->
+                                    <tr>
+                                        <td>#TXN-78944</td>
+                                        <td>Mar 17, 2025<br><span class="time">2:30 PM</span></td>
+                                        <td>
+                                            <div class="recipient-info">
+                                                <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg" alt="Sarah Johnson">
+                                                Sarah Johnson
+                                            </div>
+                                        </td>
+                                        <td>Freelance design work</td>
+                                        <td class="amount negative">-$1,250.00</td>
+                                        <td>
+                                            <div class="status-badge completed">
+                                                <i class="fas fa-check-circle"></i> Completed
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="https://etherscan.io/tx/0x3c9d2...f4b1e" target="_blank" class="blockchain-link">
+                                                <i class="fas fa-link"></i> 0x3c9d2...f4b1e
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Dispute">
+                                                    <i class="fas fa-exclamation-triangle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Transaction 3 -->
+                                    <tr>
+                                        <td>#TXN-78943</td>
+                                        <td>Mar 15, 2025<br><span class="time">9:20 AM</span></td>
+                                        <td>
+                                            <div class="recipient-info">
+                                                <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg" alt="WebDev Pros">
+                                                WebDev Pros
+                                            </div>
+                                        </td>
+                                        <td>Escrow release - project completion</td>
+                                        <td class="amount positive">+$2,500.00</td>
+                                        <td>
+                                            <div class="status-badge completed">
+                                                <i class="fas fa-check-circle"></i> Completed
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="https://etherscan.io/tx/0x2e8f7...c5d9a" target="_blank" class="blockchain-link">
+                                                <i class="fas fa-link"></i> 0x2e8f7...c5d9a
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Receipt">
+                                                    <i class="fas fa-receipt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Transaction 4 -->
+                                    <tr>
+                                        <td>#TXN-78942</td>
+                                        <td>Mar 12, 2025<br><span class="time">3:15 PM</span></td>
+                                        <td>
+                                            <div class="recipient-info">
+                                                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Aisha K.">
+                                                Aisha K.
+                                            </div>
+                                        </td>
+                                        <td>Bitcoin to USD exchange</td>
+                                        <td class="amount positive">+$1,842.50</td>
+                                        <td>
+                                            <div class="status-badge completed">
+                                                <i class="fas fa-check-circle"></i> Completed
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="https://etherscan.io/tx/0x1b6c3...d8e7f" target="_blank" class="blockchain-link">
+                                                <i class="fas fa-link"></i> 0x1b6c3...d8e7f
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Receipt">
+                                                    <i class="fas fa-receipt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Transaction 5 -->
+                                    <tr>
+                                        <td>#TXN-78941</td>
+                                        <td>Mar 10, 2025<br><span class="time">11:05 AM</span></td>
+                                        <td>
+                                            <div class="recipient-info">
+                                                <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg" alt="WebDev Pros">
+                                                WebDev Pros
+                                            </div>
+                                        </td>
+                                        <td>Website maintenance</td>
+                                        <td class="amount negative">-$500.00</td>
+                                        <td>
+                                            <div class="status-badge failed">
+                                                <i class="fas fa-times-circle"></i> Failed
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="blockchain-link inactive">
+                                                <i class="fas fa-unlink"></i> Not recorded
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="btn-icon" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Retry">
+                                                    <i class="fas fa-redo"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer">
+                            <div class="table-summary">
+                                Showing 1-5 of 24 transactions
+                            </div>
+                            <div class="table-pagination">
+                                <button class="btn-icon" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="page-number">1</span>
+                                <button class="btn-icon">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Real-time Status Indicators -->
+                <section class="transactions-card status-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Transaction Status</h2>
+                        <div class="status-update">
+                            <i class="fas fa-sync-alt"></i> Updated just now
+                        </div>
+                    </div>
+                    <div class="status-content">
+                        <div class="status-indicators">
+                            <div class="indicator-item">
+                                <div class="indicator-value">5</div>
+                                <div class="indicator-label">Pending</div>
+                                <div class="indicator-bar">
+                                    <div class="bar-fill pending" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-value">16</div>
+                                <div class="indicator-label">Completed</div>
+                                <div class="indicator-bar">
+                                    <div class="bar-fill completed" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-value">2</div>
+                                <div class="indicator-label">Failed</div>
+                                <div class="indicator-bar">
+                                    <div class="bar-fill failed" style="width: 8%"></div>
+                                </div>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-value">1</div>
+                                <div class="indicator-label">Disputed</div>
+                                <div class="indicator-bar">
+                                    <div class="bar-fill disputed" style="width: 4%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-visualization">
+                            <div class="blockchain-animation mini">
+                                <div class="block"></div>
+                                <div class="blockchain-connection"></div>
+                                <div class="block"></div>
+                                <div class="blockchain-connection"></div>
+                                <div class="block"></div>
+                                <div class="connection-animation"></div>
+                                <div class="transaction-animation"></div>
+                            </div>
+                            <div class="status-message">
+                                <i class="fas fa-check-circle"></i>
+                                <p>All systems operational</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="transactions.html" class="footer-link">Transactions</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Export Modal -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Export Transactions</h2>
+            <form class="export-form">
+                <div class="form-group">
+                    <label for="exportFormat">Format</label>
+                    <select id="exportFormat" required>
+                        <option value="">Select format</option>
+                        <option value="csv">CSV (Excel)</option>
+                        <option value="pdf">PDF</option>
+                        <option value="json">JSON</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exportRange">Date Range</label>
+                    <select id="exportRange" required>
+                        <option value="all">All Transactions</option>
+                        <option value="filtered">Current Filter</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                </div>
+                <div class="form-group" id="customDateRange" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">From</label>
+                            <input type="date" id="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">To</label>
+                            <input type="date" id="endDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exportColumns">Columns to Include</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Transaction ID
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Date
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Recipient
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Description
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Amount
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Status
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked> Blockchain ID
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/transactions.js"></script>
+</body>
+</html>

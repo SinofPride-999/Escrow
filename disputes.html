@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispute Resolution | SecureEscrow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/disputes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link active">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <!-- <div class="user-dropdown">
+                    <button class="user-avatar">
+                        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="User Avatar">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div> -->
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link active">Disputes</a></li>
+            <li>
+                <div class="mobile-user-actions">
+                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Disputes Main Content -->
+    <main class="disputes-container">
+        <div class="container">
+            <!-- Disputes Header -->
+            <div class="disputes-header">
+                <h1 class="disputes-title">Dispute Resolution Center</h1>
+                <div class="disputes-actions">
+                    <button class="btn btn-outline"><i class="fas fa-question-circle"></i> Help</button>
+                    <button class="btn btn-primary" id="newDisputeBtn">
+                        <i class="fas fa-plus"></i> New Dispute
+                    </button>
+                </div>
+            </div>
+
+            <!-- Disputes Grid -->
+            <div class="disputes-grid">
+                <!-- Open Disputes List -->
+                <section class="disputes-card open-disputes-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Open Disputes</h2>
+                        <div class="dispute-filter">
+                            <select id="disputeFilter">
+                                <option value="all">All Disputes</option>
+                                <option value="buyer">As Buyer</option>
+                                <option value="seller">As Seller</option>
+                                <option value="recent">Most Recent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="disputes-list">
+                        <!-- Dispute Item -->
+                        <div class="dispute-item">
+                            <div class="dispute-icon">
+                                <i class="fas fa-exclamation-triangle warning"></i>
+                            </div>
+                            <div class="dispute-details">
+                                <h3 class="dispute-title">Undelivered Goods - Order #45678</h3>
+                                <div class="dispute-meta">
+                                    <span><i class="fas fa-user"></i> Seller: WebDev Pros</span>
+                                    <span><i class="fas fa-calendar-alt"></i> Opened: Mar 15, 2025</span>
+                                    <span><i class="fas fa-dollar-sign"></i> Amount: $750.00</span>
+                                </div>
+                                <div class="dispute-status in-progress">
+                                    <i class="fas fa-spinner"></i> In Progress
+                                </div>
+                            </div>
+                            <button class="dispute-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Dispute Item -->
+                        <div class="dispute-item">
+                            <div class="dispute-icon">
+                                <i class="fas fa-box-open danger"></i>
+                            </div>
+                            <div class="dispute-details">
+                                <h3 class="dispute-title">Damaged Goods - Order #43210</h3>
+                                <div class="dispute-meta">
+                                    <span><i class="fas fa-user"></i> Buyer: Sarah Johnson</span>
+                                    <span><i class="fas fa-calendar-alt"></i> Opened: Mar 10, 2025</span>
+                                    <span><i class="fas fa-dollar-sign"></i> Amount: $1,250.00</span>
+                                </div>
+                                <div class="dispute-status under-review">
+                                    <i class="fas fa-search"></i> Under Review
+                                </div>
+                            </div>
+                            <button class="dispute-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Dispute Item -->
+                        <div class="dispute-item">
+                            <div class="dispute-icon">
+                                <i class="fas fa-check-circle success"></i>
+                            </div>
+                            <div class="dispute-details">
+                                <h3 class="dispute-title">Service Not Completed - Order #41234</h3>
+                                <div class="dispute-meta">
+                                    <span><i class="fas fa-user"></i> Seller: Design Masters</span>
+                                    <span><i class="fas fa-calendar-alt"></i> Opened: Mar 5, 2025</span>
+                                    <span><i class="fas fa-dollar-sign"></i> Amount: $500.00</span>
+                                </div>
+                                <div class="dispute-status resolved">
+                                    <i class="fas fa-check"></i> Resolved
+                                </div>
+                            </div>
+                            <button class="dispute-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="disputes-footer">
+                        <button class="btn btn-outline">View All Disputes</button>
+                    </div>
+                </section>
+
+                <!-- Dispute Detail View -->
+                <section class="disputes-card dispute-detail-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Dispute Details</h2>
+                        <div class="dispute-id">Case #D-78945</div>
+                    </div>
+                    <div class="dispute-content">
+                        <!-- Dispute Overview -->
+                        <div class="dispute-overview">
+                            <div class="overview-item">
+                                <div class="overview-label">Transaction</div>
+                                <div class="overview-value">Order #45678 - Web Development Service</div>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-label">Amount in Dispute</div>
+                                <div class="overview-value">$750.00</div>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-label">Dispute Type</div>
+                                <div class="overview-value">Service Not Rendered</div>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-label">Opened Date</div>
+                                <div class="overview-value">March 15, 2025</div>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-label">Other Party</div>
+                                <div class="overview-value">WebDev Pros (seller@webdevpros.com)</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resolution Tracker -->
+                        <div class="resolution-tracker">
+                            <h3 class="tracker-title">Resolution Progress</h3>
+                            <div class="tracker-steps">
+                                <div class="tracker-step active">
+                                    <div class="step-marker"></div>
+                                    <div class="step-info">
+                                        <h4>Dispute Opened</h4>
+                                        <p>March 15, 2025</p>
+                                    </div>
+                                </div>
+                                <div class="tracker-step active">
+                                    <div class="step-marker"></div>
+                                    <div class="step-info">
+                                        <h4>Evidence Submitted</h4>
+                                        <p>March 16, 2025</p>
+                                    </div>
+                                </div>
+                                <div class="tracker-step current">
+                                    <div class="step-marker"></div>
+                                    <div class="step-info">
+                                        <h4>Under Review</h4>
+                                        <p>Waiting for mediator</p>
+                                    </div>
+                                </div>
+                                <div class="tracker-step">
+                                    <div class="step-marker"></div>
+                                    <div class="step-info">
+                                        <h4>Resolution Proposed</h4>
+                                        <p>Pending</p>
+                                    </div>
+                                </div>
+                                <div class="tracker-step">
+                                    <div class="step-marker"></div>
+                                    <div class="step-info">
+                                        <h4>Case Closed</h4>
+                                        <p>Pending</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Evidence Section -->
+                        <div class="evidence-section">
+                            <div class="section-header">
+                                <h3>Evidence</h3>
+                                <button class="btn btn-sm btn-outline" id="addEvidenceBtn">
+                                    <i class="fas fa-plus"></i> Add Evidence
+                                </button>
+                            </div>
+                            <div class="evidence-list">
+                                <div class="evidence-item">
+                                    <div class="evidence-preview">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="evidence-details">
+                                        <h4>Contract Agreement.pdf</h4>
+                                        <p>Uploaded by you on March 16, 2025</p>
+                                        <div class="evidence-actions">
+                                            <button class="btn-link"><i class="fas fa-download"></i> Download</button>
+                                            <button class="btn-link"><i class="fas fa-trash"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="evidence-item">
+                                    <div class="evidence-preview">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <div class="evidence-details">
+                                        <h4>Screenshot_20250315.png</h4>
+                                        <p>Uploaded by WebDev Pros on March 17, 2025</p>
+                                        <div class="evidence-actions">
+                                            <button class="btn-link"><i class="fas fa-download"></i> Download</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Messaging Interface -->
+                        <div class="messaging-section">
+                            <div class="section-header">
+                                <h3>Dispute Communication</h3>
+                                <div class="messaging-actions">
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-paperclip"></i> Attach</button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-history"></i> History</button>
+                                </div>
+                            </div>
+                            <div class="messages-container">
+                                <div class="message-list">
+                                    <!-- Message from you -->
+                                    <div class="message-item sent">
+                                        <div class="message-avatar">
+                                            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="You">
+                                        </div>
+                                        <div class="message-content">
+                                            <div class="message-header">
+                                                <span class="message-sender">You</span>
+                                                <span class="message-time">Today, 10:30 AM</span>
+                                            </div>
+                                            <div class="message-text">
+                                                <p>I still haven't received the completed website as promised in our contract. The delivery date was March 10th and it's now 5 days overdue.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Message from other party -->
+                                    <div class="message-item received">
+                                        <div class="message-avatar">
+                                            <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg" alt="WebDev Pros">
+                                        </div>
+                                        <div class="message-content">
+                                            <div class="message-header">
+                                                <span class="message-sender">WebDev Pros</span>
+                                                <span class="message-time">Today, 11:45 AM</span>
+                                            </div>
+                                            <div class="message-text">
+                                                <p>We apologize for the delay. Our lead developer had an emergency and we're working to complete your project as soon as possible. We'll deliver by Friday.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Message from mediator -->
+                                    <div class="message-item mediator">
+                                        <div class="message-avatar">
+                                            <img src="https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg" alt="Mediator">
+                                        </div>
+                                        <div class="message-content">
+                                            <div class="message-header">
+                                                <span class="message-sender">SecureEscrow Mediator</span>
+                                                <span class="message-time">Today, 2:15 PM</span>
+                                            </div>
+                                            <div class="message-text">
+                                                <p>This dispute has been assigned to me. I've reviewed the submitted evidence and will be reaching out to both parties shortly to discuss resolution options.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="message-composer">
+                                    <textarea placeholder="Type your message here..."></textarea>
+                                    <div class="composer-actions">
+                                        <button class="btn btn-sm btn-outline"><i class="fas fa-paperclip"></i></button>
+                                        <button class="btn btn-primary">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dispute-footer">
+                        <button class="btn btn-outline"><i class="fas fa-print"></i> Print Case</button>
+                        <button class="btn btn-primary"><i class="fas fa-check"></i> Propose Settlement</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- New Dispute Modal -->
+    <div class="modal" id="disputeModal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Open New Dispute</h2>
+            <form class="dispute-form">
+                <div class="form-group">
+                    <label for="disputeTransaction">Select Transaction</label>
+                    <select id="disputeTransaction" required>
+                        <option value="">Choose a transaction</option>
+                        <option value="45678">Order #45678 - Web Development Service ($750.00)</option>
+                        <option value="43210">Order #43210 - Graphic Design Package ($1,250.00)</option>
+                        <option value="41234">Order #41234 - SEO Services ($500.00)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="disputeType">Dispute Type</label>
+                    <select id="disputeType" required>
+                        <option value="">Select dispute type</option>
+                        <option value="undelivered">Goods/Services Not Received</option>
+                        <option value="damaged">Goods Damaged or Defective</option>
+                        <option value="not-as-described">Goods Not as Described</option>
+                        <option value="other">Other Issue</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="disputeAmount">Dispute Amount</label>
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="disputeAmount" placeholder="0.00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="disputeDescription">Description</label>
+                    <textarea id="disputeDescription" placeholder="Please describe the issue in detail" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="disputeResolution">Desired Resolution</label>
+                    <textarea id="disputeResolution" placeholder="What would you consider a fair resolution to this dispute?" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Evidence</label>
+                    <div class="file-upload">
+                        <input type="file" id="disputeEvidence" multiple>
+                        <label for="disputeEvidence" class="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop files here or click to browse</p>
+                            <span class="file-types">Supports: PDF, JPG, PNG, DOCX (Max 10MB each)</span>
+                        </label>
+                        <div class="file-preview"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Dispute</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Evidence Upload Modal -->
+    <div class="modal" id="evidenceModal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Add Evidence to Dispute</h2>
+            <form class="evidence-form">
+                <div class="form-group">
+                    <label for="evidenceTitle">Evidence Title</label>
+                    <input type="text" id="evidenceTitle" placeholder="e.g., Contract Agreement, Screenshot of Conversation" required>
+                </div>
+                <div class="form-group">
+                    <label for="evidenceDescription">Description</label>
+                    <textarea id="evidenceDescription" placeholder="Briefly describe what this evidence shows" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Files</label>
+                    <div class="file-upload">
+                        <input type="file" id="evidenceFiles" multiple>
+                        <label for="evidenceFiles" class="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop files here or click to browse</p>
+                            <span class="file-types">Supports: PDF, JPG, PNG, DOCX (Max 10MB each)</span>
+                        </label>
+                        <div class="file-preview"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Evidence</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/disputes.js"></script>
+</body>
+</html>
