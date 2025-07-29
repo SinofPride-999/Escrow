@@ -78,16 +78,22 @@
     gap: 1rem;
     margin-bottom: 2rem;
     animation: slideInLeft 1s ease-out 0.4s both;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .hero-stats {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     animation: slideInLeft 1s ease-out 0.6s both;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .stat-item {
     text-align: center;
+    min-width: 100px;
+    flex: 1;
 }
 
 .stat-number {
@@ -802,12 +808,33 @@
         margin-right: auto;
     }
     
+    /* Center align CTA buttons on mobile */
     .hero-cta {
         justify-content: center;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling if needed */
+        padding-bottom: 10px; /* Space for scrollbar */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
     
+    /* Center align stats on mobile */
     .hero-stats {
         justify-content: center;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling if needed */
+        padding-bottom: 10px; /* Space for scrollbar */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    /* Hide scrollbar while keeping functionality */
+    .hero-cta::-webkit-scrollbar,
+    .hero-stats::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Hide the shield on smaller screens */
+    .hero-image {
+        display: none;
     }
     
     .cta .container {
@@ -842,12 +869,20 @@
     }
     
     .hero-cta {
-        flex-direction: column;
+        gap: 0.75rem;
     }
     
     .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
+    }
+    
+    .stat-item {
+        min-width: 80px;
+        flex: 0 0 auto; /* Prevent shrinking */
+    }
+    
+    .stat-number {
+        font-size: 2rem;
     }
     
     .cta-title {
@@ -879,34 +914,25 @@
         font-size: 2rem;
     }
     
-    .security-shield {
-        font-size: 6rem;
+    /* Make CTA buttons more compact but stay in one line */
+    .hero-cta .btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        white-space: nowrap; /* Prevent text wrapping */
     }
     
-    .ring-1 {
-        width: 150px;
-        height: 150px;
-        margin: -75px 0 0 -75px;
-    }
-    
-    .ring-2 {
-        width: 225px;
-        height: 225px;
-        margin: -112.5px 0 0 -112.5px;
-    }
-    
-    .ring-3 {
-        width: 300px;
-        height: 300px;
-        margin: -150px 0 0 -150px;
-    }
-    
-    .hero-cta {
-        flex-direction: column;
-    }
-    
+    /* Adjust stats for very small screens */
     .hero-stats {
-        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+        white-space: nowrap; /* Prevent text wrapping */
     }
     
     .cta-title {
@@ -914,10 +940,43 @@
     }
     
     .cta-buttons {
-        flex-direction: column;
+        flex-direction: row; /* Keep CTA buttons horizontal */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .cta-buttons::-webkit-scrollbar {
+        display: none;
     }
     
     .feature-card {
         padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 400px) {
+    /* For very small screens, force horizontal layout with scroll if needed */
+    .hero-cta {
+        gap: 0.5rem;
+    }
+    
+    /* Make stats even more compact but still horizontal */
+    .hero-stats {
+        gap: 0.5rem;
+    }
+    
+    .stat-item {
+        min-width: 70px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    /* Ensure buttons don't wrap in CTA section */
+    .cta-buttons .btn {
+        white-space: nowrap;
+        flex: 0 0 auto;
     }
 }

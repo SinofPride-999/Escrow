@@ -156,22 +156,34 @@ function togglePasswordVisibility(input, button) {
 
 // Active Nav Link Highlighting
 function setActiveNavLink() {
-    navLinks.forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     
-    mobileNavLinks.forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
-            link.classList.add('active');
-        } else {
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
             link.classList.remove('active');
-        }
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+        
+        mobileNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
     });
 }
 
@@ -336,3 +348,4 @@ if (signupPassword) {
 mobileNavLinks.forEach(link => {
     link.addEventListener('click', toggleMobileMenu);
 });
+
