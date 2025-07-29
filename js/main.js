@@ -17,7 +17,15 @@ const signupPassword = document.getElementById('signupPassword');
 const passwordStrengthMeter = document.querySelector('.strength-meter');
 const passwordStrengthText = document.querySelector('.strength-text span');
 const navLinks = document.querySelectorAll('.nav-link');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-list .nav-link'); // Fixed selector
+
+
+console.log('Mobile Menu Toggle:', mobileMenuToggle);
+console.log('Mobile Menu:', mobileMenu);
+console.log('Login Button:', loginBtn);
+console.log('Signup Button:', signupBtn);
+console.log('Auth Modal:', authModal);
+
 
 // Current page
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -60,27 +68,56 @@ function simulateLoading() {
 
 // Mobile Menu
 function toggleMobileMenu() {
+    const isOpen = mobileMenu.classList.contains('active');
+    
+    // Toggle menu
     mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    body.classList.toggle('menu-open');
+    
+    // Toggle the menu icon
+    const icon = mobileMenuToggle.querySelector('i');
+    if (!isOpen) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
 }
+
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('active') && 
+        !e.target.closest('.mobile-menu') && 
+        !e.target.closest('.mobile-menu-toggle')) {
+        toggleMobileMenu();
+    }
+});
 
 // Auth Modal
 function openAuthModal(formType = 'login') {
+    // Close mobile menu if open
+    if (mobileMenu.classList.contains('active')) {
+        toggleMobileMenu();
+    }
+    
     authModal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
-    // Show the requested form
-    if (formType === 'login') {
-        switchAuthTab('login');
-    } else {
-        switchAuthTab('signup');
-    }
+    switchAuthTab(formType);
 }
 
 function closeAuthModal() {
     authModal.classList.remove('active');
     document.body.style.overflow = '';
 }
+
+// Close modal when clicking outside
+authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) {
+        closeAuthModal();
+    }
+});
 
 function switchAuthTab(tabName) {
     authTabs.forEach(tab => {
@@ -271,6 +308,24 @@ document.addEventListener('DOMContentLoaded', () => {
     simulateLoading();
     setActiveNavLink();
     
+    // Mobile menu toggle
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Auth buttons
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => openAuthModal('login'));
+    }
+    
+    if (signupBtn) {
+        signupBtn.addEventListener('click', () => openAuthModal('signup'));
+    }
+    
     // Only run these on the home page
     if (currentPage === 'index.html' || currentPage === '') {
         animateCountUp();
@@ -315,6 +370,17 @@ mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 mobileMenuClose.addEventListener('click', toggleMobileMenu);
 loginBtn.addEventListener('click', () => openAuthModal('login'));
 signupBtn.addEventListener('click', () => openAuthModal('signup'));
+authModalClose.addEventListener('click', closeAuthModal);
+
+// Auth button event listeners
+document.querySelectorAll('.auth-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isSignup = this.id === 'signupBtn' || this.textContent.toLowerCase().includes('sign up');
+        openAuthModal(isSignup ? 'signup' : 'login');
+    });
+});
+
 authModalClose.addEventListener('click', closeAuthModal);
 
 // Close modal when clicking outside
