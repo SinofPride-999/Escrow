@@ -1,0 +1,19 @@
+/secure-escrow/
+├── index.html          # Home/Landing page
+├── dashboard.html      # User dashboard
+├── transactions.html   # Transactions page
+├── marketplace.html    # Task marketplace
+├── disputes.html       # Dispute resolution
+├── education.html      # Educational content
+├── css/
+│   ├── main.css        # Global styles
+│   ├── home.css        # Home page specific
+│   ├── dashboard.css   # Dashboard specific
+│   └── ... (other page-specific CSS)
+├── js/
+│   ├── main.js         # Global JS
+│   ├── auth.js         # Authentication logic
+│   ├── transactions.js # Transactions logic
+│   └── ... (other page-specific JS)
+├── assets/             # Images, icons, etc.
+└── README.md

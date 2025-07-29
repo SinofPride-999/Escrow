@@ -1,0 +1,4653 @@
+I am creating this app
+"
+"1. Secure Escrow Transactions: Encrypted transactions for user security.
+
+
+2. Multi-Payment Options: Support for mobile money, credit/debit cards, bank transfers, and cryptocurrencies.
+
+
+3. Blockchain Integration: For transparent and immutable records.
+
+
+4. Real-Time Tracking: Allow users to track transactions in real-time.
+
+
+5. User Verification: Implement a robust KYC process.
+
+
+6. Educational Content: Provide tips and articles on online security.
+
+
+7. Monetization:
+
+Transaction Fees: Implement small fees per transaction.
+
+Partnerships: Integrate sponsored cashback rewards.
+
+Premium Services: Add subscription options.
+
+Advertising: Include personalized ads based on user preferences.
+
+
+
+8. User Engagement:
+
+Referral Program: Reward users for referrals.
+
+Task Marketplace: Allow users to offer and find freelance services.
+
+Cashback & Rewards: Provide rewards for transactions.
+
+
+
+9. Dispute Resolution:
+
+Proof of Delivery: Require sellers to provide proof of delivery.
+
+Dispute Submission: Enable both parties to submit evidence if a dispute arises.
+
+Escrow Hold: Temporarily hold funds until the issue is resolved.
+
+Customer Support: Provide support to mediate and resolve disputes.
+
+11. A messaging feature between buyer and seller
+"
+
+Build this frontend in just html, css and js.
+
+Make it super responsive on all devices, tablet, mobile, laptop, desktops, bigger desktop.
+Make it very mordern, very sleek, responive ui. Make the colors black, gold on dark mode and white and gold on light mode. Write a main.css file that all pages would use, and then just write other specific page styles. same thing with the js.
+
+Simulate the bacekend logic with the js and link everything together. The UI should be animated with transitions effects, hover effects and on scroll animated transitions. everything should have an animated effect. Pretend to be a real world senior frontend software engineer working on this. This is a project that belongs to an organization of Cyber Security analyst, so let the theme of the website be Cyber Security, Secure Security, Web3. Be sure to add dark-light theme toggle accross all pages.
+"
+
+
+I have already created the index page, dashboard, education, marketplace nd transactions.
+
+here is my project dir
+/secure-escrow/
+├── index.html          # Home/Landing page
+├── dashboard.html      # User dashboard
+├── transactions.html   # Transactions page
+├── marketplace.html    # Task marketplace
+├── disputes.html       # Dispute resolution
+├── education.html      # Educational content
+├── css/
+│   ├── main.css        # Global styles
+│   ├── home.css        # Home page specific
+│   ├── dashboard.css   # Dashboard specific
+│   └── ... (other page-specific CSS)
+├── js/
+│   ├── main.js         # Global JS
+│   ├── auth.js         # Authentication logic
+│   ├── transactions.js # Transactions logic
+│   └── ... (other page-specific JS)
+├── assets/             # Images, icons, etc.
+└── README.md
+
+here is index.html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureEscrow | Blockchain-Powered Secure Transactions</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="btn btn-outline auth-btn" id="loginBtn">Login</button>
+                <button class="btn btn-primary auth-btn" id="signupBtn">Sign Up</button>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li>
+                <div class="mobile-auth-buttons">
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Secure <span class="gold-text">Blockchain</span> Escrow Service</h1>
+                <p class="hero-subtitle">Trustless transactions with military-grade encryption and multi-payment options</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-lg">Start Secure Transaction</button>
+                    <button class="btn btn-outline btn-lg">How It Works</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="12500">0</div>
+                        <div class="stat-label">Transactions Secured</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="98">0</div>
+                        <div class="stat-label">Disputes Resolved</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="4.9">0</div>
+                        <div class="stat-label">User Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="blockchain-visualization">
+                    <div class="blockchain-node"></div>
+                    <div class="blockchain-connection"></div>
+                    <div class="blockchain-node"></div>
+                    <div class="blockchain-connection"></div>
+                    <div class="blockchain-node"></div>
+                    <div class="connection-animation"></div>
+                    <div class="transaction-animation"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Our <span class="gold-text">Security</span> Features</h2>
+            <p class="section-subtitle">Built with cutting-edge technology to protect your transactions</p>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Escrow Transactions</h3>
+                    <p class="feature-description">End-to-end encrypted transactions with military-grade security protocols.</p>
+                    <div class="feature-badge">AES-256</div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="feature-title">Multi-Payment Options</h3>
+                    <p class="feature-description">Mobile money, credit/debit cards, bank transfers, and cryptocurrencies.</p>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-bitcoin"></i>
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="feature-title">Blockchain Integration</h3>
+                    <p class="feature-description">Immutable transaction records on the blockchain for complete transparency.</p>
+                    <div class="feature-badge">Ethereum | Polygon</div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Real-Time Tracking</h3>
+                    <p class="feature-description">Monitor your transactions in real-time with our tracking dashboard.</p>
+                    <div class="feature-badge">Live Updates</div>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="feature-title">User Verification</h3>
+                    <p class="feature-description">Robust KYC process to ensure all parties are verified and trustworthy.</p>
+                    <div class="feature-badge">KYC Verified</div>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">Educational Content</h3>
+                    <p class="feature-description">Learn about online security with our comprehensive guides and articles.</p>
+                    <div class="feature-badge">Learn & Earn</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How <span class="gold-text">SecureEscrow</span> Works</h2>
+            <p class="section-subtitle">A simple 4-step process for secure transactions</p>
+            
+            <div class="steps-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                
+                <div class="steps">
+                    <!-- Step 1 -->
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Initiate Transaction</h3>
+                            <p class="step-description">Create a new escrow transaction and specify the terms.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Fund Escrow</h3>
+                            <p class="step-description">Deposit funds using your preferred payment method.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Confirm Delivery</h3>
+                            <p class="step-description">Seller provides proof of delivery or service completion.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Release Funds</h3>
+                            <p class="step-description">Funds are released to the seller upon confirmation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Trusted by <span class="gold-text">Thousands</span></h2>
+            <p class="section-subtitle">What our users say about SecureEscrow</p>
+            
+            <div class="testimonials-slider">
+                <div class="slider-container">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "SecureEscrow saved me from a potential scam. The escrow service held my funds until I received exactly what I paid for. The dispute resolution was fair and fast."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg" alt="Sarah J." class="author-avatar">
+                            <div class="author-info">
+                                <h4 class="author-name">Sarah J.</h4>
+                                <p class="author-title">Freelance Developer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "As a small business owner, I use SecureEscrow for all my international transactions. The blockchain integration gives me peace of mind knowing all records are immutable."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Michael T." class="author-avatar">
+                            <div class="author-info">
+                                <h4 class="author-name">Alex Johnson</h4>
+                                <p class="author-title">E-commerce Entrepreneur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "The real-time tracking feature is amazing. I can see exactly where my transaction is in the process. The educational content also helped me understand crypto transactions better."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Aisha K." class="author-avatar">
+                            <div class="author-info">
+                                <h4 class="author-name">Aisha K.</h4>
+                                <p class="author-title">Digital Artist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Experience <span class="gold-text">Secure</span> Transactions?</h2>
+                <p class="cta-subtitle">Join thousands of users who trust SecureEscrow for their secure transactions.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-lg">Get Started</button>
+                    <button class="btn btn-outline btn-lg">Contact Sales</button>
+                </div>
+            </div>
+            <div class="cta-image">
+                <img src="https://static.vecteezy.com/system/resources/previews/029/908/578/non_2x/secure-payment-credit-card-icon-with-shield-secure-transaction-stock-illustration-vector.jpg" alt="Secure Transaction" class="cta-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal">
+        <div class="auth-modal-content">
+            <button class="auth-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                    <button type="button" class="show-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox"> Remember me
+                        <span class="checkmark"></span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <div class="auth-divider">
+                    <span>or continue with</span>
+                </div>
+                <div class="social-auth">
+                    <button type="button" class="btn btn-outline btn-social">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button type="button" class="btn btn-outline btn-social">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                    <button type="button" class="btn btn-outline btn-social">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Signup Form -->
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                    <button type="button" class="show-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <div class="password-strength">
+                        <div class="strength-meter"></div>
+                        <div class="strength-text">Password strength: <span>weak</span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                <div class="auth-divider">
+                    <span>or sign up with</span>
+                </div>
+                <div class="social-auth">
+                    <button type="button" class="btn btn-outline btn-social">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button type="button" class="btn btn-outline btn-social">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                    <button type="button" class="btn btn-outline btn-social">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
+
+main.css
+/* ===== Global Variables ===== */
+:root {
+    /* Light Theme */
+    --light-bg: #ffffff;
+    --light-text: #333333;
+    --light-card: #f8f9fa;
+    --light-border: #e0e0e0;
+    
+    /* Dark Theme */
+    --dark-bg: #121212;
+    --dark-text: #f5f5f5;
+    --dark-card: #1e1e1e;
+    --dark-border: #333333;
+    
+    /* Shared Colors */
+    --primary: #d4af37; /* Gold */
+    --primary-dark: #b7950b;
+    --primary-light: #f1e5ac;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    
+    /* Typography */
+    --font-main: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-round: 50%;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    --shadow-primary: 0 0 10px rgba(212, 175, 55, 0.3);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-index */
+    --z-modal: 1000;
+    --z-header: 900;
+    --z-tooltip: 800;
+    --z-overlay: 700;
+}
+
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: var(--dark-bg);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+body.light-mode {
+    color: var(--light-text);
+    background-color: var(--light-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+    transition: all var(--transition-fast);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+section {
+    padding: var(--space-xxl) 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--secondary);
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+}
+
+.gold-text {
+    color: var(--primary);
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    gap: var(--space-sm);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #000;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-lg {
+    padding: var(--space-md) var(--space-lg);
+    font-size: 1.1rem;
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+.btn-social {
+    flex: 1;
+}
+
+/* ===== Header ===== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-header);
+    background-color: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(10px);
+    padding: var(--space-sm) 0;
+    transition: all var(--transition-normal);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .main-header {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.main-nav .nav-list {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.nav-link {
+    position: relative;
+    padding: var(--space-sm) 0;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.theme-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.theme-toggle i {
+    position: absolute;
+    transition: opacity var(--transition-fast), transform var(--transition-normal);
+}
+
+.theme-toggle .fa-moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle .fa-sun {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.light-mode .theme-toggle .fa-moon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.light-mode .theme-toggle .fa-sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--dark-card);
+    z-index: var(--z-modal);
+    transition: right var(--transition-normal);
+    padding: var(--space-xl);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+.light-mode .mobile-menu {
+    background-color: var(--light-card);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--space-xl);
+}
+
+.mobile-menu-close {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: var(--space-sm) 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light-mode .mobile-nav-link {
+    border-bottom-color: var(--light-border);
+}
+
+.mobile-auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    text-align: center;
+    color: var(--primary);
+}
+
+.blockchain-animation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+}
+
+.blockchain-animation .block {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary);
+    margin: 0 5px;
+    border-radius: var(--radius-sm);
+    animation: blockPulse 1.5s infinite ease-in-out;
+}
+
+.blockchain-animation .block:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.blockchain-animation .block:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.blockchain-animation .block:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.blockchain-animation .block:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes blockPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+.loading-spinner p {
+    margin-top: var(--space-md);
+    font-size: 1.1rem;
+    color: white;
+}
+
+/* Auth Modal */
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.auth-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth-modal-content {
+    background-color: var(--dark-card);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    padding: var(--space-xl);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+    box-shadow: var(--shadow-xl);
+}
+
+.light-mode .auth-modal-content {
+    background-color: var(--light-card);
+}
+
+.auth-modal.active .auth-modal-content {
+    transform: translateY(0);
+}
+
+.auth-modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--secondary);
+}
+
+.auth-modal-close:hover {
+    color: var(--primary);
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light-mode .auth-tabs {
+    border-bottom-color: var(--light-border);
+}
+
+.auth-tab {
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 500;
+    position: relative;
+    color: var(--secondary);
+}
+
+.auth-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-fast);
+}
+
+.auth-tab.active {
+    color: var(--primary);
+}
+
+.auth-tab.active::after {
+    transform: scaleX(1);
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: var(--space-md);
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    font-family: var(--font-main);
+    transition: all var(--transition-fast);
+}
+
+.light-mode .form-group input {
+    border-color: var(--light-border);
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.show-password {
+    position: absolute;
+    right: var(--space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.show-password:hover {
+    color: var(--primary);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.9rem;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 18px;
+    width: 18px;
+    background-color: var(--dark-bg);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-sm);
+    margin-right: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.light-mode .checkmark {
+    background-color: var(--light-bg);
+    border-color: var(--light-border);
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: var(--primary);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #000;
+    font-size: 0.7rem;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.forgot-password {
+    font-size: 0.9rem;
+    color: var(--primary);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: var(--space-lg) 0;
+    color: var(--secondary);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--dark-border);
+}
+
+.light-mode .auth-divider::before,
+.light-mode .auth-divider::after {
+    background-color: var(--light-border);
+}
+
+.auth-divider span {
+    padding: 0 var(--space-md);
+}
+
+.social-auth {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.password-strength {
+    margin-top: var(--space-sm);
+}
+
+.strength-meter {
+    height: 4px;
+    background-color: var(--dark-border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: var(--space-xs);
+}
+
+.light-mode .strength-meter {
+    background-color: var(--light-border);
+}
+
+.strength-meter::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    background-color: var(--danger);
+    transition: width var(--transition-normal), background-color var(--transition-normal);
+}
+
+.strength-text {
+    font-size: 0.8rem;
+    color: var(--secondary);
+}
+
+.strength-text span {
+    font-weight: 500;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--dark-card);
+    color: var(--dark-text);
+    padding: var(--space-xxl) 0 0;
+}
+
+.light-mode .main-footer {
+    background-color: #f5f5f5;
+    color: var(--light-text);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xxl);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+}
+
+.footer-logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.footer-about-text {
+    margin-bottom: var(--space-md);
+    opacity: 0.8;
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-bg);
+    color: var(--primary);
+    transition: all var(--transition-fast);
+}
+
+.light-mode .social-link {
+    background-color: #e0e0e0;
+}
+
+.social-link:hover {
+    background-color: var(--primary);
+    color: #000;
+    transform: translateY(-3px);
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    position: relative;
+    padding-bottom: var(--space-sm);
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer-link {
+    opacity: 0.8;
+    transition: all var(--transition-fast);
+}
+
+.footer-link:hover {
+    opacity: 1;
+    color: var(--primary);
+    padding-left: var(--space-xs);
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    opacity: 0.8;
+}
+
+.footer-contact i {
+    color: var(--primary);
+    width: 20px;
+    text-align: center;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: var(--space-md);
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: var(--space-sm);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.light-mode .newsletter-form input {
+    border-color: var(--light-border);
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+.newsletter-form button {
+    padding: 0 var(--space-md);
+    background-color: var(--primary);
+    color: #000;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: background-color var(--transition-fast);
+}
+
+.newsletter-form button:hover {
+    background-color: var(--primary-dark);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--dark-border);
+    padding: var(--space-md) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.light-mode .footer-bottom {
+    border-top-color: var(--light-border);
+}
+
+.footer-copyright {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.footer-legal a {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.footer-legal a:hover {
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-xxl { margin-top: var(--space-xxl); }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-xxl { margin-bottom: var(--space-xxl); }
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .main-nav {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-actions .auth-btn {
+        display: none;
+    }
+    
+    .mobile-auth-buttons {
+        display: flex;
+    }
+    
+    section {
+        padding: var(--space-xl) 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-legal {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .social-auth {
+        flex-direction: column;
+    }
+}
+
+home.css
+/* ===== Hero Section ===== */
+.hero {
+    padding-top: calc(var(--space-xxl) * 2);
+    padding-bottom: var(--space-xxl);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.light-mode .hero::before {
+    background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.hero-content {
+    flex: 1;
+    animation: fadeIn 1s ease, slideUp 1s ease;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s ease 0.3s both;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xl);
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.hero-stats {
+    display: flex;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.blockchain-visualization {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.blockchain-node {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-round);
+    background-color: var(--dark-card);
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.light-mode .blockchain-node {
+    background-color: var(--light-card);
+}
+
+.blockchain-node:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation: pulse 3s infinite;
+}
+
+.blockchain-node:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 3s infinite 0.5s;
+}
+
+.blockchain-node:nth-child(3) {
+    bottom: 20%;
+    right: 10%;
+    animation: pulse 3s infinite 1s;
+}
+
+.blockchain-connection {
+    position: absolute;
+    height: 2px;
+    background-color: var(--primary);
+    opacity: 0.3;
+}
+
+.blockchain-connection:nth-child(4) {
+    top: 40%;
+    left: 18%;
+    width: 25%;
+    transform: rotate(20deg);
+}
+
+.blockchain-connection:nth-child(5) {
+    top: 60%;
+    left: 35%;
+    width: 30%;
+    transform: rotate(-15deg);
+}
+
+.connection-animation {
+    position: absolute;
+    height: 2px;
+    background-color: var(--primary);
+    top: 40%;
+    left: 18%;
+    width: 0;
+    transform: rotate(20deg);
+    animation: connectionFlow 4s infinite;
+}
+
+.transaction-animation {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary);
+    border-radius: var(--radius-round);
+    top: 40%;
+    left: 18%;
+    opacity: 0;
+    animation: transactionFlow 4s infinite;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+@keyframes connectionFlow {
+    0% {
+        width: 0;
+        left: 18%;
+        opacity: 1;
+    }
+    30% {
+        width: 25%;
+        opacity: 1;
+    }
+    31%, 100% {
+        width: 25%;
+        left: 18%;
+        opacity: 0;
+    }
+}
+
+@keyframes transactionFlow {
+    0% {
+        left: 18%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    30% {
+        left: 43%;
+        opacity: 1;
+    }
+    31%, 49% {
+        opacity: 0;
+        left: 35%;
+    }
+    50% {
+        opacity: 1;
+        left: 35%;
+    }
+    80% {
+        left: 65%;
+        opacity: 1;
+    }
+    81%, 100% {
+        opacity: 0;
+        left: 65%;
+    }
+}
+
+/* ===== Features Section ===== */
+.features {
+    position: relative;
+    overflow: hidden;
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.light-mode .features::before {
+    background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.feature-card {
+    background-color: var(--dark-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--dark-border);
+    animation: fadeIn 0.5s ease;
+}
+
+.light-mode .feature-card {
+    background-color: var(--light-card);
+    border-color: var(--light-border);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-round);
+    background-color: rgba(212, 175, 55, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+    transition: all var(--transition-normal);
+}
+
+.feature-card:hover .feature-icon {
+    background-color: var(--primary);
+    color: #000;
+    transform: rotateY(180deg);
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+}
+
+.feature-description {
+    opacity: 0.8;
+    margin-bottom: var(--space-md);
+}
+
+.feature-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: var(--space-sm);
+}
+
+.payment-methods {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    font-size: 1.5rem;
+    color: var(--secondary);
+}
+
+/* ===== How It Works Section ===== */
+.how-it-works {
+    background-color: var(--dark-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.light-mode .how-it-works {
+    background-color: #f9f9f9;
+}
+
+.how-it-works::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.steps-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    height: calc(100% - 60px);
+    width: 4px;
+    background-color: var(--dark-border);
+    z-index: 0;
+}
+
+.light-mode .progress-bar {
+    background-color: var(--light-border);
+}
+
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--primary);
+    transition: height 1s ease;
+    z-index: 1;
+}
+
+.steps {
+    position: relative;
+    z-index: 2;
+}
+
+.step {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xxl);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-round);
+    background-color: var(--dark-bg);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+}
+
+.light-mode .step-number {
+    background-color: var(--light-bg);
+}
+
+.step.active .step-number {
+    background-color: var(--primary);
+    color: #000;
+    box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.2);
+}
+
+.step-content {
+    padding-top: var(--space-sm);
+}
+
+.step-title {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+}
+
+.step-description {
+    opacity: 0.8;
+}
+
+/* ===== Testimonials Section ===== */
+.testimonials-slider {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.slider-container {
+    display: flex;
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--space-lg);
+}
+
+.testimonial-card {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    background-color: var(--dark-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--dark-border);
+}
+
+.light-mode .testimonial-card {
+    background-color: var(--light-card);
+    border-color: var(--light-border);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.testimonial-rating {
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: var(--space-xl);
+    position: relative;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--primary);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.testimonial-text::before {
+    top: -20px;
+    left: -10px;
+}
+
+.testimonial-text::after {
+    bottom: -40px;
+    right: -10px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-round);
+    object-fit: cover;
+    border: 2px solid var(--primary);
+}
+
+.author-name {
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.author-title {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.slider-prev,
+.slider-next {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    background-color: var(--dark-card);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--dark-border);
+    transition: all var(--transition-fast);
+}
+
+.light-mode .slider-prev,
+.light-mode .slider-next {
+    background-color: var(--light-card);
+    border-color: var(--light-border);
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+    background-color: var(--primary);
+    color: #000;
+    border-color: var(--primary);
+}
+
+.slider-dots {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-round);
+    background-color: var(--dark-border);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.light-mode .dot {
+    background-color: var(--light-border);
+}
+
+.dot.active {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+/* ===== CTA Section ===== */
+.cta {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%), url('assets/cta-bg.jpg') center/cover no-repeat;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.light-mode .cta {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 245, 0.9) 100%), url('assets/cta-bg-light.jpg') center/cover no-repeat;
+    color: var(--light-text);
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 0) 50%);
+    z-index: 0;
+}
+
+.light-mode .cta::before {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%);
+}
+
+.cta .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.cta-content {
+    flex: 1;
+}
+
+.cta-image {
+    flex: 1;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xl);
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.cta-img {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive Styles for Home Page */
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        margin-bottom: var(--space-xl);
+    }
+    
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .cta .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cta-content {
+        margin-bottom: var(--space-xl);
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .cta::before {
+        background: linear-gradient(0deg, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 0) 50%);
+    }
+    
+    .light-mode .cta::before {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .steps-container {
+        padding-left: var(--space-md);
+    }
+    
+    .step {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .progress-bar {
+        left: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+    }
+    
+    .cta-title {
+        font-size: 1.8rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .feature-card {
+        padding: var(--space-lg);
+    }
+}
+
+main.js
+// DOM Elements
+const themeToggle = document.querySelector('.theme-toggle');
+const body = document.body;
+const loadingOverlay = document.querySelector('.loading-overlay');
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileMenuClose = document.querySelector('.mobile-menu-close');
+const authModal = document.querySelector('.auth-modal');
+const authModalClose = document.querySelector('.auth-modal-close');
+const loginBtn = document.getElementById('loginBtn');
+const signupBtn = document.getElementById('signupBtn');
+const authTabs = document.querySelectorAll('.auth-tab');
+const authForms = document.querySelectorAll('.auth-form');
+const showPasswordBtns = document.querySelectorAll('.show-password');
+const passwordInputs = document.querySelectorAll('input[type="password"]');
+const signupPassword = document.getElementById('signupPassword');
+const passwordStrengthMeter = document.querySelector('.strength-meter');
+const passwordStrengthText = document.querySelector('.strength-text span');
+const navLinks = document.querySelectorAll('.nav-link');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+// Current page
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+// Theme Management
+function setTheme(theme) {
+    body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+function toggleTheme() {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+}
+
+// Initialize theme from localStorage or prefer-color-scheme
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        setTheme(prefersDark ? 'dark' : 'light');
+    }
+}
+
+// Loading Overlay
+function simulateLoading() {
+    setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+        
+        // Remove from DOM after animation completes
+        setTimeout(() => {
+            loadingOverlay.remove();
+        }, 500);
+    }, 1500);
+}
+
+// Mobile Menu
+function toggleMobileMenu() {
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+// Auth Modal
+function openAuthModal(formType = 'login') {
+    authModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Show the requested form
+    if (formType === 'login') {
+        switchAuthTab('login');
+    } else {
+        switchAuthTab('signup');
+    }
+}
+
+function closeAuthModal() {
+    authModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function switchAuthTab(tabName) {
+    authTabs.forEach(tab => {
+        if (tab.dataset.tab === tabName) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+    
+    authForms.forEach(form => {
+        if (form.id === `${tabName}Form`) {
+            form.classList.add('active');
+        } else {
+            form.classList.remove('active');
+        }
+    });
+}
+
+// Password Strength Checker
+function checkPasswordStrength(password) {
+    let strength = 0;
+    
+    // Length check
+    if (password.length >= 8) strength += 1;
+    if (password.length >= 12) strength += 1;
+    
+    // Character type checks
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+    
+    return strength;
+}
+
+function updatePasswordStrength() {
+    const password = signupPassword.value;
+    const strength = checkPasswordStrength(password);
+    
+    // Update meter width
+    const width = (strength / 5) * 100;
+    passwordStrengthMeter.style.width = `${width}%`;
+    
+    // Update text and color
+    let strengthText = 'weak';
+    let color = 'var(--danger)';
+    
+    if (strength >= 4) {
+        strengthText = 'strong';
+        color = 'var(--success)';
+    } else if (strength >= 2) {
+        strengthText = 'medium';
+        color = 'var(--warning)';
+    }
+    
+    passwordStrengthMeter.style.backgroundColor = color;
+    passwordStrengthText.textContent = strengthText;
+    passwordStrengthText.style.color = color;
+}
+
+// Show/Hide Password
+function togglePasswordVisibility(input, button) {
+    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+    input.setAttribute('type', type);
+    
+    // Update icon
+    if (type === 'text') {
+        button.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+        button.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+}
+
+// Active Nav Link Highlighting
+function setActiveNavLink() {
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
+    mobileNavLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+// Scroll Animation
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.feature-card, .step, .testimonial-card');
+    
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+            element.classList.add('active');
+        }
+    });
+}
+
+// Count Up Animation
+function animateCountUp() {
+    const counters = document.querySelectorAll('[data-count]');
+    const speed = 200;
+    
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCountUp, 1);
+        } else {
+            counter.innerText = target;
+        }
+    });
+}
+
+// Testimonial Slider
+function initTestimonialSlider() {
+    const sliderContainer = document.querySelector('.slider-container');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    
+    function goToSlide(index) {
+        sliderContainer.scrollTo({
+            left: index * sliderContainer.offsetWidth,
+            behavior: 'smooth'
+        });
+        
+        // Update active dot
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        
+        currentIndex = index;
+    }
+    
+    // Button events
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + dots.length) % dots.length;
+        goToSlide(currentIndex);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % dots.length;
+        goToSlide(currentIndex);
+    });
+    
+    // Dot events
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Auto-advance (optional)
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % dots.length;
+        goToSlide(currentIndex);
+    }, 5000);
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    simulateLoading();
+    setActiveNavLink();
+    
+    // Only run these on the home page
+    if (currentPage === 'index.html' || currentPage === '') {
+        animateCountUp();
+        initTestimonialSlider();
+        
+        // Animate steps progress
+        const steps = document.querySelectorAll('.step');
+        const progress = document.querySelector('.progress');
+        
+        function updateProgress() {
+            let activeSteps = 0;
+            
+            steps.forEach(step => {
+                const stepPosition = step.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.5;
+                
+                if (stepPosition < screenPosition) {
+                    step.classList.add('active');
+                    activeSteps++;
+                }
+            });
+            
+            // Update progress bar
+            const progressPercentage = (activeSteps / steps.length) * 100;
+            progress.style.height = `${progressPercentage}%`;
+        }
+        
+        // Initial check
+        updateProgress();
+        
+        // Check on scroll
+        window.addEventListener('scroll', updateProgress);
+    }
+    
+    // Scroll animation for all pages
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
+});
+
+themeToggle.addEventListener('click', toggleTheme);
+mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+mobileMenuClose.addEventListener('click', toggleMobileMenu);
+loginBtn.addEventListener('click', () => openAuthModal('login'));
+signupBtn.addEventListener('click', () => openAuthModal('signup'));
+authModalClose.addEventListener('click', closeAuthModal);
+
+// Close modal when clicking outside
+authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) {
+        closeAuthModal();
+    }
+});
+
+// Auth tab switching
+authTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const tabName = tab.dataset.tab;
+        switchAuthTab(tabName);
+    });
+});
+
+// Show password toggle
+showPasswordBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        togglePasswordVisibility(passwordInputs[index], btn);
+    });
+});
+
+// Password strength indicator
+if (signupPassword) {
+    signupPassword.addEventListener('input', updatePasswordStrength);
+}
+
+// Close mobile menu when clicking a link
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', toggleMobileMenu);
+});
+
+
+auth.js
+
+// DOM Elements
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+const forgotPasswordLink = document.querySelector('.forgot-password');
+
+// Simulated user database
+const users = JSON.parse(localStorage.getItem('secureEscrowUsers')) || [
+    // Default admin user for demo
+    {
+        id: 1,
+        name: 'Admin User',
+        email: 'admin@secureescrow.com',
+        password: 'Secure123!',
+        verified: true,
+        kycCompleted: true,
+        balance: 10000,
+        transactions: []
+    }
+];
+
+// Current user
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+
+// Auth Functions
+function loginUser(email, password) {
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+        currentUser = user;
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        return true;
+    }
+    
+    return false;
+}
+
+function registerUser(name, email, password) {
+    // Check if user already exists
+    const userExists = users.some(u => u.email === email);
+    
+    if (userExists) {
+        return { success: false, message: 'User already exists with this email' };
+    }
+    
+    // Create new user
+    const newUser = {
+        id: users.length + 1,
+        name,
+        email,
+        password,
+        verified: false,
+        kycCompleted: false,
+        balance: 0,
+        transactions: []
+    };
+    
+    users.push(newUser);
+    localStorage.setItem('secureEscrowUsers', JSON.stringify(users));
+    
+    // Automatically log in the new user
+    currentUser = newUser;
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    
+    return { success: true, user: newUser };
+}
+
+function showAlert(message, type = 'success') {
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type}`;
+    alert.textContent = message;
+    alert.style.position = 'fixed';
+    alert.style.top = '20px';
+    alert.style.right = '20px';
+    alert.style.padding = '15px 20px';
+    alert.style.borderRadius = 'var(--radius-md)';
+    alert.style.backgroundColor = type === 'success' ? 'var(--success)' : 'var(--danger)';
+    alert.style.color = 'white';
+    alert.style.zIndex = '10000';
+    alert.style.boxShadow = 'var(--shadow-md)';
+    alert.style.transform = 'translateX(200%)';
+    alert.style.transition = 'transform 0.3s ease';
+    
+    document.body.appendChild(alert);
+    
+    // Animate in
+    setTimeout(() => {
+        alert.style.transform = 'translateX(0)';
+    }, 10);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        alert.style.transform = 'translateX(200%)';
+        setTimeout(() => {
+            alert.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Form Submissions
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        
+        if (loginUser(email, password)) {
+            showAlert('Login successful! Redirecting...');
+            
+            // Simulate KYC check
+            if (!currentUser.kycCompleted) {
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html#kyc';
+                }, 1500);
+            } else {
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            }
+        } else {
+            showAlert('Invalid email or password', 'error');
+        }
+    });
+}
+
+if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('signupName').value;
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+        const confirmPassword = document.getElementById('signupConfirmPassword').value;
+        
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            showAlert('Passwords do not match', 'error');
+            return;
+        }
+        
+        // Register user
+        const result = registerUser(name, email, password);
+        
+        if (result.success) {
+            showAlert('Registration successful! Please complete KYC verification.');
+            
+            setTimeout(() => {
+                window.location.href = 'dashboard.html#kyc';
+            }, 1500);
+        } else {
+            showAlert(result.message, 'error');
+        }
+    });
+}
+
+if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showAlert('Password reset link sent to your email (simulated)');
+    });
+}
+
+// Social Login Buttons
+document.querySelectorAll('.btn-social').forEach(btn => {
+    btn.addEventListener('click', () => {
+        showAlert(`Social login with ${btn.textContent.trim()} is simulated for this demo`, 'info');
+    });
+});
+
+
+here is how the dashboard look like
+dashboard.html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SecureEscrow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="user-dropdown">
+                    <button class="user-avatar">
+                        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="User Avatar">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link active">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li>
+                <div class="mobile-user-actions">
+                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-container">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <div class="dashboard-actions">
+                    <button class="btn btn-outline"><i class="fas fa-bell"></i></button>
+                    <button class="btn btn-outline"><i class="fas fa-question-circle"></i> Help</button>
+                    <button class="btn btn-primary" id="newTransactionBtn">
+                        <i class="fas fa-plus"></i> New Transaction
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- User Profile Section -->
+                <section class="dashboard-card profile-card">
+                    <div class="card-header">
+                        <h2 class="card-title">User Profile</h2>
+                        <button class="card-action"><i class="fas fa-edit"></i> Edit</button>
+                    </div>
+                    <div class="profile-content">
+                        <div class="profile-avatar">
+                            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="User Avatar">
+                            <div class="verification-badge">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-name">Alex Johnson</h3>
+                            <p class="profile-email">alex.johnson@example.com</p>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">87%</div>
+                                    <div class="stat-label">Trust Score</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">24</div>
+                                    <div class="stat-label">Transactions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-footer">
+                        <div class="profile-meta">
+                            <span><i class="fas fa-user-shield"></i> KYC Verified</span>
+                            <span><i class="fas fa-calendar-alt"></i> Member since 2022</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Balance Overview -->
+                <section class="dashboard-card balance-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Balance Overview</h2>
+                        <button class="card-action"><i class="fas fa-exchange-alt"></i> Transfer</button>
+                    </div>
+                    <div class="balance-content">
+                        <div class="balance-main">
+                            <div class="balance-amount">$4,892.50</div>
+                            <div class="balance-change positive">
+                                <i class="fas fa-arrow-up"></i> 12.5% from last month
+                            </div>
+                        </div>
+                        <div class="balance-details">
+                            <div class="detail-item">
+                                <div class="detail-label">In Escrow</div>
+                                <div class="detail-value">$1,250.00</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Available</div>
+                                <div class="detail-value">$3,642.50</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="balance-footer">
+                        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Withdraw</button>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-upload"></i> Deposit</button>
+                    </div>
+                </section>
+
+                <!-- Quick Transaction Buttons -->
+                <section class="dashboard-card quick-actions-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <span>Send Money</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <span>Receive</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <span>Create Link</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <span>Request</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <span>Exchange</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <span>Crypto</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Recent Transactions -->
+                <section class="dashboard-card transactions-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Transactions</h2>
+                        <button class="card-action">View All</button>
+                    </div>
+                    <div class="transactions-list">
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-down success"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Payment Received</h3>
+                                <p class="transaction-meta">From: Jane Smith • Today, 10:45 AM</p>
+                            </div>
+                            <div class="transaction-amount success">
+                                +$1,250.00
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-up danger"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Escrow Payment</h3>
+                                <p class="transaction-meta">To: WebDev Pros • Yesterday, 2:30 PM</p>
+                            </div>
+                            <div class="transaction-amount danger">
+                                -$750.00
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Currency Exchange</h3>
+                                <p class="transaction-meta">BTC to USD • Mar 12, 3:15 PM</p>
+                            </div>
+                            <div class="transaction-amount">
+                                +$1,842.50
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Transaction Item -->
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-down success"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h3 class="transaction-title">Escrow Release</h3>
+                                <p class="transaction-meta">Project Completion • Mar 10, 9:20 AM</p>
+                            </div>
+                            <div class="transaction-amount success">
+                                +$2,500.00
+                            </div>
+                            <button class="transaction-action">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- KYC Verification Section -->
+                <section class="dashboard-card kyc-card" id="kycSection">
+                    <div class="card-header">
+                        <h2 class="card-title">Identity Verification</h2>
+                        <div class="verification-status verified">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </div>
+                    </div>
+                    <div class="kyc-content">
+                        <div class="kyc-progress">
+                            <div class="progress-steps">
+                                <div class="step completed">
+                                    <div class="step-number">1</div>
+                                    <div class="step-info">
+                                        <h4>Basic Information</h4>
+                                        <p>Name, address, and contact details</p>
+                                    </div>
+                                </div>
+                                <div class="step completed">
+                                    <div class="step-number">2</div>
+                                    <div class="step-info">
+                                        <h4>ID Document</h4>
+                                        <p>Passport or driver's license</p>
+                                    </div>
+                                </div>
+                                <div class="step completed">
+                                    <div class="step-number">3</div>
+                                    <div class="step-info">
+                                        <h4>Selfie Verification</h4>
+                                        <p>Photo with your ID document</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kyc-benefits">
+                            <h3>Verification Benefits</h3>
+                            <ul class="benefits-list">
+                                <li><i class="fas fa-check"></i> Higher transaction limits</li>
+                                <li><i class="fas fa-check"></i> Faster withdrawals</li>
+                                <li><i class="fas fa-check"></i> Access to premium features</li>
+                                <li><i class="fas fa-check"></i> Increased trust score</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="kyc-footer">
+                        <button class="btn btn-outline" disabled>
+                            <i class="fas fa-check"></i> Verification Complete
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Referral Program -->
+                <section class="dashboard-card referral-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Referral Program</h2>
+                    </div>
+                    <div class="referral-content">
+                        <div class="referral-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">Friends Joined</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">$125</div>
+                                <div class="stat-label">Earned</div>
+                            </div>
+                        </div>
+                        <div class="referral-info">
+                            <h3>Invite friends & earn $25 each</h3>
+                            <p>Share your referral link and earn rewards when your friends sign up and complete their first transaction.</p>
+                        </div>
+                        <div class="referral-link">
+                            <input type="text" value="https://secureescrow.com/ref/alexj" readonly>
+                            <button class="btn btn-sm"><i class="fas fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                    <div class="referral-footer">
+                        <button class="btn btn-primary"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </section>
+
+                <!-- Premium Services -->
+                <section class="dashboard-card premium-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Premium Services</h2>
+                    </div>
+                    <div class="premium-content">
+                        <div class="premium-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Basic Plan</span>
+                        </div>
+                        <div class="premium-features">
+                            <h3>Upgrade for More Benefits</h3>
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i> Lower transaction fees (0.5%)</li>
+                                <li><i class="fas fa-check"></i> Priority customer support</li>
+                                <li><i class="fas fa-check"></i> Advanced security features</li>
+                                <li><i class="fas fa-check"></i> Exclusive marketplace access</li>
+                            </ul>
+                        </div>
+                        <div class="premium-plans">
+                            <div class="plan-option">
+                                <h4>Basic</h4>
+                                <div class="plan-price">Free</div>
+                                <ul class="plan-features">
+                                    <li>1.5% fees</li>
+                                    <li>Standard support</li>
+                                </ul>
+                            </div>
+                            <div class="plan-option recommended">
+                                <div class="recommended-badge">Recommended</div>
+                                <h4>Pro</h4>
+                                <div class="plan-price">$9.99<span>/month</span></div>
+                                <ul class="plan-features">
+                                    <li>0.5% fees</li>
+                                    <li>Priority support</li>
+                                    <li>Advanced security</li>
+                                </ul>
+                                <button class="btn btn-sm btn-outline">Current Plan</button>
+                            </div>
+                            <div class="plan-option">
+                                <h4>Business</h4>
+                                <div class="plan-price">$29.99<span>/month</span></div>
+                                <ul class="plan-features">
+                                    <li>0.25% fees</li>
+                                    <li>24/7 support</li>
+                                    <li>Team accounts</li>
+                                    <li>API access</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="premium-footer">
+                        <button class="btn btn-primary">Upgrade Plan</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="https://img.freepik.com/premium-vector/cyber-security-logo-icon-symbol-vector-illustration-modern-cyber-security-logo_1123785-4541.jpg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- New Transaction Modal -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">New Secure Transaction</h2>
+            <form class="transaction-form">
+                <div class="form-group">
+                    <label for="transactionType">Transaction Type</label>
+                    <select id="transactionType" required>
+                        <option value="">Select transaction type</option>
+                        <option value="goods">Goods Purchase</option>
+                        <option value="services">Services</option>
+                        <option value="freelance">Freelance Work</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transactionAmount">Amount</label>
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="transactionAmount" placeholder="0.00" required>
+                        <select class="input-suffix">
+                            <option>USD</option>
+                            <option>EUR</option>
+                            <option>BTC</option>
+                            <option>ETH</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipientEmail">Recipient Email</label>
+                    <input type="email" id="recipientEmail" placeholder="recipient@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="transactionDescription">Description</label>
+                    <textarea id="transactionDescription" placeholder="Brief description of the transaction"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="escrowTerms">Escrow Terms</label>
+                    <textarea id="escrowTerms" placeholder="Conditions for releasing funds"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Transaction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+
+
+dashboard.css
+/* ===== Dashboard Layout ===== */
+.dashboard-container {
+    padding-top: calc(var(--space-xxl) + 70px);
+    padding-bottom: var(--space-xxl);
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background-color: var(--dark-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--dark-border);
+}
+
+.light-mode .dashboard-card {
+    background-color: var(--light-card);
+    border-color: var(--light-border);
+}
+
+.dashboard-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card-action {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+}
+
+.card-action:hover {
+    color: var(--primary-dark);
+}
+
+/* Profile Card */
+.profile-card {
+    grid-column: span 1;
+}
+
+.profile-content {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.profile-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-round);
+    object-fit: cover;
+    border: 3px solid var(--primary);
+}
+
+.verification-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background-color: var(--success);
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 2px solid var(--dark-card);
+}
+
+.light-mode .verification-badge {
+    border-color: var(--light-card);
+}
+
+.profile-name {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-xs);
+}
+
+.profile-email {
+    opacity: 0.8;
+    margin-bottom: var(--space-md);
+}
+
+.profile-stats {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.profile-stats .stat-item {
+    text-align: center;
+}
+
+.profile-stats .stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.profile-stats .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.profile-meta {
+    display: flex;
+    gap: var(--space-md);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.profile-meta i {
+    color: var(--primary);
+    margin-right: var(--space-xs);
+}
+
+/* Balance Card */
+.balance-card {
+    grid-column: span 1;
+}
+
+.balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.balance-change {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+}
+
+.balance-change.positive {
+    color: var(--success);
+}
+
+.balance-change.negative {
+    color: var(--danger);
+}
+
+.balance-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light-mode .balance-details {
+    border-color: var(--light-border);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: var(--space-xs);
+}
+
+.detail-value {
+    font-weight: 600;
+}
+
+.balance-footer {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.btn-sm {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.9rem;
+}
+
+/* Quick Actions Card */
+.quick-actions-card {
+    grid-column: span 1;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.quick-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.quick-action:hover {
+    color: var(--primary);
+}
+
+.quick-action .action-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-round);
+    background-color: rgba(212, 175, 55, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+}
+
+.quick-action:hover .action-icon {
+    background-color: var(--primary);
+    color: #000;
+    transform: scale(1.1);
+}
+
+.quick-action span {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Transactions Card */
+.transactions-card {
+    grid-column: span 2;
+}
+
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.transaction-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.light-mode .transaction-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    background-color: rgba(212, 175, 55, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.transaction-icon .success {
+    color: var(--success);
+}
+
+.transaction-icon .danger {
+    color: var(--danger);
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+}
+
+.transaction-meta {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.transaction-amount.success {
+    color: var(--success);
+}
+
+.transaction-amount.danger {
+    color: var(--danger);
+}
+
+.transaction-action {
+    background: none;
+    border: none;
+    color: var(--secondary);
+    cursor: pointer;
+    opacity: 0;
+    transition: all var(--transition-fast);
+}
+
+.transaction-item:hover .transaction-action {
+    opacity: 1;
+}
+
+/* KYC Card */
+.kyc-card {
+    grid-column: span 1;
+}
+
+.verification-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.verification-status.verified {
+    color: var(--success);
+}
+
+.verification-status.pending {
+    color: var(--warning);
+}
+
+.verification-status.unverified {
+    color: var(--danger);
+}
+
+.kyc-progress {
+    margin-bottom: var(--space-lg);
+}
+
+.progress-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.step {
+    display: flex;
+    gap: var(--space-md);
+    position: relative;
+}
+
+.step::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    width: 2px;
+    height: calc(100% + var(--space-lg));
+    background-color: var(--dark-border);
+    z-index: 0;
+}
+
+.light-mode .step::before {
+    background-color: var(--light-border);
+}
+
+.step:last-child::before {
+    display: none;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-round);
+    background-color: var(--dark-bg);
+    border: 2px solid var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.light-mode .step-number {
+    background-color: var(--light-bg);
+}
+
+.step.completed .step-number {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.step-info h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+}
+
+.step-info p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.kyc-benefits {
+    background-color: rgba(212, 175, 55, 0.05);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    margin-bottom: var(--space-lg);
+}
+
+.kyc-benefits h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+    color: var(--primary);
+}
+
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.benefits-list i {
+    color: var(--primary);
+}
+
+/* Referral Card */
+.referral-card {
+    grid-column: span 1;
+}
+
+.referral-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.referral-stats {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.referral-stats .stat-item {
+    text-align: center;
+    flex: 1;
+    background-color: rgba(212, 175, 55, 0.05);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.referral-stats .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--space-xs);
+}
+
+.referral-stats .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.referral-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    color: var(--primary);
+}
+
+.referral-info p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.referral-link {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.referral-link input {
+    flex: 1;
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.light-mode .referral-link input {
+    border-color: var(--light-border);
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Premium Card */
+.premium-card {
+    grid-column: span 2;
+}
+
+.premium-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.premium-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    width: fit-content;
+}
+
+.premium-features h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+    color: var(--primary);
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-sm);
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.features-list i {
+    color: var(--primary);
+}
+
+.premium-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.plan-option {
+    background-color: var(--dark-bg);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    border: 1px solid var(--dark-border);
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.light-mode .plan-option {
+    background-color: var(--light-bg);
+    border-color: var(--light-border);
+}
+
+.plan-option:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--primary);
+}
+
+.plan-option.recommended {
+    border-color: var(--primary);
+}
+
+.recommended-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background-color: var(--primary);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+}
+
+.plan-option h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+}
+
+.plan-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    color: var(--primary);
+}
+
+.plan-price span {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--secondary);
+}
+
+.plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--dark-card);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 600px;
+    padding: var(--space-xl);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+    box-shadow: var(--shadow-xl);
+}
+
+.light-mode .modal-content {
+    background-color: var(--light-card);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--secondary);
+}
+
+.modal-close:hover {
+    color: var(--primary);
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+    color: var(--primary);
+}
+
+.transaction-form .form-group {
+    margin-bottom: var(--space-md);
+}
+
+.transaction-form label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+}
+
+.transaction-form select,
+.transaction-form textarea {
+    width: 100%;
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    font-family: var(--font-main);
+    transition: all var(--transition-fast);
+}
+
+.light-mode .transaction-form select,
+.light-mode .transaction-form textarea {
+    border-color: var(--light-border);
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+.transaction-form select:focus,
+.transaction-form textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.light-mode .input-group {
+    border-color: var(--light-border);
+}
+
+.input-group .input-prefix,
+.input-group .input-suffix {
+    padding: var(--space-sm);
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.input-group .input-suffix {
+    border-left: 1px solid var(--dark-border);
+    background-color: var(--dark-bg);
+}
+
+.light-mode .input-group .input-suffix {
+    border-left-color: var(--light-border);
+    background-color: var(--light-bg);
+}
+
+.input-group input {
+    flex: 1;
+    border: none;
+    padding: var(--space-sm);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.light-mode .input-group input {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+/* User Dropdown */
+.user-dropdown {
+    position: relative;
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.user-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-round);
+    object-fit: cover;
+    border: 2px solid var(--primary);
+}
+
+.user-avatar i {
+    font-size: 0.8rem;
+    transition: transform var(--transition-fast);
+}
+
+.user-dropdown.active .user-avatar i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + var(--space-sm));
+    right: 0;
+    background-color: var(--dark-card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    width: 200px;
+    padding: var(--space-sm) 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-fast);
+    z-index: var(--z-tooltip);
+    border: 1px solid var(--dark-border);
+}
+
+.light-mode .dropdown-menu {
+    background-color: var(--light-card);
+    border-color: var(--light-border);
+}
+
+.user-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    color: inherit;
+    transition: all var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--primary);
+}
+
+.dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Mobile User Actions */
+.mobile-user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-md);
+}
+
+.light-mode .mobile-user-actions {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-user-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+}
+
+.mobile-user-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .transactions-card,
+    .premium-card {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+    
+    .dashboard-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .premium-plans {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+    }
+    
+    .profile-meta {
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: center;
+    }
+    
+    .balance-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .referral-link {
+        flex-direction: column;
+    }
+}
+
+dashboard.js
+// DOM Elements
+const userDropdown = document.querySelector('.user-dropdown');
+const newTransactionBtn = document.getElementById('newTransactionBtn');
+const transactionModal = document.getElementById('transactionModal');
+const modalClose = document.querySelector('.modal-close');
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', () => {
+    // Check for KYC hash in URL
+    if (window.location.hash === '#kyc') {
+        const kycSection = document.getElementById('kycSection');
+        if (kycSection) {
+            kycSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Highlight for attention
+            setTimeout(() => {
+                kycSection.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.5)';
+                setTimeout(() => {
+                    kycSection.style.boxShadow = 'none';
+                }, 2000);
+            }, 500);
+        }
+    }
+});
+
+// User dropdown toggle
+userDropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+    userDropdown.classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', () => {
+    userDropdown.classList.remove('active');
+});
+
+// New transaction modal
+newTransactionBtn.addEventListener('click', () => {
+    transactionModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+modalClose.addEventListener('click', () => {
+    transactionModal.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+// Close modal when clicking outside
+transactionModal.addEventListener('click', (e) => {
+    if (e.target === transactionModal) {
+        transactionModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Copy referral link
+const copyReferralBtn = document.querySelector('.referral-link button');
+if (copyReferralBtn) {
+    copyReferralBtn.addEventListener('click', () => {
+        const referralInput = document.querySelector('.referral-link input');
+        if (referralInput) {
+            referralInput.select();
+            document.execCommand('copy');
+            
+            // Show feedback
+            const originalText = copyReferralBtn.innerHTML;
+            copyReferralBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            
+            setTimeout(() => {
+                copyReferralBtn.innerHTML = originalText;
+            }, 2000);
+        }
+    });
+}
+
+// Transaction item actions
+document.querySelectorAll('.transaction-action').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // In a real app, this would show a context menu with options
+        alert('Transaction options would appear here');
+    });
+});
+
+// Simulate transaction form submission
+const transactionForm = document.querySelector('.transaction-form');
+if (transactionForm) {
+    transactionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Simulate processing
+        const submitBtn = transactionForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        submitBtn.disabled = true;
+        
+        setTimeout(() => {
+            // Show success message
+            alert('Transaction created successfully!');
+            
+            // Reset form
+            transactionForm.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Close modal
+            transactionModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }, 1500);
+    });
+}
+
+// Plan selection
+document.querySelectorAll('.plan-option').forEach(plan => {
+    plan.addEventListener('click', () => {
+        if (!plan.classList.contains('recommended')) {
+            alert(`You've selected the ${plan.querySelector('h4').textContent} plan. In a real app, this would initiate the upgrade process.`);
+        }
+    });
+});
+
+
+with this, write an implement witht he same consistent ui design and project flow the 
