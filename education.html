@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education | SecureEscrow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/education.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="blockchain-animation">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <p>Securing Connection...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="SecureEscrow" class="logo-img">
+                    <span>Secure<span class="gold-text">Escrow</span></span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+                    <li><a href="education.html" class="nav-link active">Education</a></li>
+                    <li><a href="disputes.html" class="nav-link">Disputes</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="user-dropdown">
+                    <button class="user-avatar">
+                        <img src="assets/user-avatar.jpg" alt="User Avatar">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+            <li><a href="marketplace.html" class="mobile-nav-link">Marketplace</a></li>
+            <li><a href="education.html" class="mobile-nav-link active">Education</a></li>
+            <li><a href="disputes.html" class="mobile-nav-link">Disputes</a></li>
+            <li>
+                <div class="mobile-user-actions">
+                    <a href="#" class="mobile-user-link"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="mobile-user-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Education Main Content -->
+    <main class="education-container">
+        <div class="container">
+            <!-- Education Header -->
+            <div class="education-header">
+                <h1 class="education-title">Security Education Center</h1>
+                <p class="education-subtitle">Learn how to protect yourself and your transactions with our comprehensive security resources</p>
+            </div>
+
+            <!-- Categories Navigation -->
+            <div class="categories-nav">
+                <button class="category-btn active" data-category="all">All Resources</button>
+                <button class="category-btn" data-category="guides">Security Guides</button>
+                <button class="category-btn" data-category="videos">Video Tutorials</button>
+                <button class="category-btn" data-category="quizzes">Learn & Earn</button>
+                <button class="category-btn" data-category="checklists">Checklists</button>
+            </div>
+
+            <!-- Featured Security Guides -->
+            <section class="education-section">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Security Guides</h2>
+                    <a href="#" class="section-link">View All Guides <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="guides-grid">
+                    <!-- Guide 1 -->
+                    <div class="guide-card" data-category="guides">
+                        <div class="guide-badge">
+                            <i class="fas fa-shield-alt"></i> Essential
+                        </div>
+                        <div class="guide-image">
+                            <img src="assets/guide-phishing.jpg" alt="Phishing Protection">
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">How to Spot and Avoid Phishing Scams</h3>
+                            <p class="guide-excerpt">Learn to identify phishing attempts and protect your accounts from fraudulent attacks.</p>
+                            <div class="guide-meta">
+                                <span class="meta-item"><i class="far fa-clock"></i> 8 min read</span>
+                                <span class="meta-item"><i class="fas fa-star"></i> Advanced</span>
+                            </div>
+                        </div>
+                        <div class="guide-footer">
+                            <button class="btn btn-outline btn-sm">Read Guide</button>
+                            <button class="btn btn-primary btn-sm earn-btn" data-reward="5">
+                                <i class="fas fa-coins"></i> Earn 5 ESC
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Guide 2 -->
+                    <div class="guide-card" data-category="guides">
+                        <div class="guide-image">
+                            <img src="assets/guide-2fa.jpg" alt="2FA Setup">
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">The Complete Guide to Two-Factor Authentication</h3>
+                            <p class="guide-excerpt">Everything you need to know about setting up and using 2FA for maximum account security.</p>
+                            <div class="guide-meta">
+                                <span class="meta-item"><i class="far fa-clock"></i> 12 min read</span>
+                                <span class="meta-item"><i class="fas fa-star"></i> Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="guide-footer">
+                            <button class="btn btn-outline btn-sm">Read Guide</button>
+                            <button class="btn btn-primary btn-sm earn-btn" data-reward="5">
+                                <i class="fas fa-coins"></i> Earn 5 ESC
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Guide 3 -->
+                    <div class="guide-card" data-category="guides">
+                        <div class="guide-badge">
+                            <i class="fas fa-lock"></i> Premium
+                        </div>
+                        <div class="guide-image">
+                            <img src="assets/guide-blockchain.jpg" alt="Blockchain Security">
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">Blockchain Security: Protecting Your Crypto Transactions</h3>
+                            <p class="guide-excerpt">Advanced techniques for securing your cryptocurrency transactions and wallets.</p>
+                            <div class="guide-meta">
+                                <span class="meta-item"><i class="far fa-clock"></i> 15 min read</span>
+                                <span class="meta-item"><i class="fas fa-star"></i> Expert</span>
+                            </div>
+                        </div>
+                        <div class="guide-footer">
+                            <button class="btn btn-outline btn-sm">Read Guide</button>
+                            <button class="btn btn-primary btn-sm earn-btn" data-reward="10">
+                                <i class="fas fa-coins"></i> Earn 10 ESC
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Tutorials -->
+            <section class="education-section">
+                <div class="section-header">
+                    <h2 class="section-title">Video Tutorials</h2>
+                    <a href="#" class="section-link">View All Videos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="videos-grid">
+                    <!-- Video 1 -->
+                    <div class="video-card" data-category="videos">
+                        <div class="video-thumbnail">
+                            <img src="assets/video-secure-transaction.jpg" alt="Secure Transactions">
+                            <div class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">8:32</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">How to Create Secure Escrow Transactions</h3>
+                            <p class="video-excerpt">Step-by-step guide to setting up and managing secure escrow transactions.</p>
+                            <div class="video-meta">
+                                <span class="meta-item"><i class="far fa-eye"></i> 1.2K views</span>
+                                <span class="meta-item"><i class="fas fa-star"></i> Beginner</span>
+                            </div>
+                        </div>
+                        <div class="video-footer">
+                            <button class="btn btn-outline btn-sm">Watch Now</button>
+                            <button class="btn btn-primary btn-sm earn-btn" data-reward="5">
+                                <i class="fas fa-coins"></i> Earn 5 ESC
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="video-card" data-category="videos">
+                        <div class="video-thumbnail">
+                            <img src="assets/video-password.jpg" alt="Password Security">
+                            <div class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">6:15</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Creating and Managing Strong Passwords</h3>
+                            <p class="video-excerpt">Best practices for creating uncrackable passwords and managing them securely.</p>
+                            <div class="video-meta">
+                                <span class="meta-item"><i class="far fa-eye"></i> 2.4K views</span>
+                                <span class="meta-item"><i class="fas fa-star"></i> Beginner</span>
+                            </div>
+                        </div>
+                        <div class="video-footer">
+                            <button class="btn btn-outline btn-sm">Watch Now</button>
+                            <button class="btn btn-primary btn-sm earn-btn" data-reward="5">
+                                <i class="fas fa-coins"></i> Earn 5 ESC
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="video-card" data-category="videos">
+                        <div class="video-badge">
+                            <i class="fas fa-lock"></i> Premium
+                        </div>
+                        <div class="video-thumbnail">
+                            <img src="assets/video-crypto-security.jpg" alt="Crypto Security">
+                            <div class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">12:45</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Advanced Cryptocurrency Security Techniques</h3>
+                            <p class="video-excerpt">Learn cold storage, multi-sig wallets, and other advanced crypto security methods.</p>
+                            <div class="video-meta">
+                                <span class="meta-item"><i class="far fa-eye"></i> 856 views</span>
+                                <span class="meta-item"><i class="fas fa-star"></i> Expert</span>
+                            </div>
+                        </div>
+                        <div class="video-footer">
+                            <button class="btn btn-outline btn-sm">Watch Now</button>
+                            <button class="btn btn-primary btn-sm earn-btn" data-reward="10">
+                                <i class="fas fa-coins"></i> Earn 10 ESC
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learn & Earn Quizzes -->
+            <section class="education-section">
+                <div class="section-header">
+                    <h2 class="section-title">Learn & Earn Quizzes</h2>
+                    <a href="#" class="section-link">View All Quizzes <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="quizzes-grid">
+                    <!-- Quiz 1 -->
+                    <div class="quiz-card" data-category="quizzes">
+                        <div class="quiz-badge">
+                            <i class="fas fa-bolt"></i> Quick
+                        </div>
+                        <div class="quiz-content">
+                            <h3 class="quiz-title">Phishing Awareness Quiz</h3>
+                            <p class="quiz-excerpt">Test your ability to identify phishing attempts and win rewards!</p>
+                            <div class="quiz-meta">
+                                <span class="meta-item"><i class="far fa-question-circle"></i> 5 questions</span>
+                                <span class="meta-item"><i class="fas fa-coins"></i> Up to 10 ESC</span>
+                            </div>
+                            <div class="quiz-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%;"></div>
+                                </div>
+                                <span>65% completed</span>
+                            </div>
+                        </div>
+                        <div class="quiz-footer">
+                            <button class="btn btn-outline btn-sm">Continue</button>
+                            <button class="btn btn-primary btn-sm">Start Quiz</button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 2 -->
+                    <div class="quiz-card" data-category="quizzes">
+                        <div class="quiz-content">
+                            <h3 class="quiz-title">Escrow Transaction Security</h3>
+                            <p class="quiz-excerpt">How well do you know secure escrow practices? Take the challenge!</p>
+                            <div class="quiz-meta">
+                                <span class="meta-item"><i class="far fa-question-circle"></i> 10 questions</span>
+                                <span class="meta-item"><i class="fas fa-coins"></i> Up to 20 ESC</span>
+                            </div>
+                            <div class="quiz-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 30%;"></div>
+                                </div>
+                                <span>30% completed</span>
+                            </div>
+                        </div>
+                        <div class="quiz-footer">
+                            <button class="btn btn-outline btn-sm">Continue</button>
+                            <button class="btn btn-primary btn-sm">Start Quiz</button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 3 -->
+                    <div class="quiz-card" data-category="quizzes">
+                        <div class="quiz-badge">
+                            <i class="fas fa-gem"></i> Premium
+                        </div>
+                        <div class="quiz-content">
+                            <h3 class="quiz-title">Advanced Crypto Security</h3>
+                            <p class="quiz-excerpt">Test your knowledge of blockchain security and earn crypto rewards.</p>
+                            <div class="quiz-meta">
+                                <span class="meta-item"><i class="far fa-question-circle"></i> 15 questions</span>
+                                <span class="meta-item"><i class="fas fa-coins"></i> Up to 50 ESC</span>
+                            </div>
+                            <div class="quiz-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;"></div>
+                                </div>
+                                <span>Not started</span>
+                            </div>
+                        </div>
+                        <div class="quiz-footer">
+                            <button class="btn btn-outline btn-sm disabled">Continue</button>
+                            <button class="btn btn-primary btn-sm">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Checklists -->
+            <section class="education-section">
+                <div class="section-header">
+                    <h2 class="section-title">Security Checklists</h2>
+                    <a href="#" class="section-link">View All Checklists <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="checklists-grid">
+                    <!-- Checklist 1 -->
+                    <div class="checklist-card" data-category="checklists">
+                        <div class="checklist-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="checklist-content">
+                            <h3 class="checklist-title">Online Transaction Security Checklist</h3>
+                            <p class="checklist-excerpt">Essential steps to secure every online transaction you make.</p>
+                            <div class="checklist-meta">
+                                <span class="meta-item"><i class="far fa-file-pdf"></i> PDF</span>
+                                <span class="meta-item"><i class="fas fa-download"></i> 12KB</span>
+                            </div>
+                        </div>
+                        <div class="checklist-footer">
+                            <button class="btn btn-outline btn-sm">Preview</button>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Checklist 2 -->
+                    <div class="checklist-card" data-category="checklists">
+                        <div class="checklist-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="checklist-content">
+                            <h3 class="checklist-title">Crypto Wallet Security Checklist</h3>
+                            <p class="checklist-excerpt">Comprehensive guide to securing your cryptocurrency wallets.</p>
+                            <div class="checklist-meta">
+                                <span class="meta-item"><i class="far fa-file-pdf"></i> PDF</span>
+                                <span class="meta-item"><i class="fas fa-download"></i> 18KB</span>
+                            </div>
+                        </div>
+                        <div class="checklist-footer">
+                            <button class="btn btn-outline btn-sm">Preview</button>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Checklist 3 -->
+                    <div class="checklist-card" data-category="checklists">
+                        <div class="checklist-badge">
+                            <i class="fas fa-lock"></i> Premium
+                        </div>
+                        <div class="checklist-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="checklist-content">
+                            <h3 class="checklist-title">Business Account Security Checklist</h3>
+                            <p class="checklist-excerpt">Advanced security measures for business and high-volume accounts.</p>
+                            <div class="checklist-meta">
+                                <span class="meta-item"><i class="far fa-file-pdf"></i> PDF</span>
+                                <span class="meta-item"><i class="fas fa-download"></i> 24KB</span>
+                            </div>
+                        </div>
+                        <div class="checklist-footer">
+                            <button class="btn btn-outline btn-sm">Preview</button>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education CTA -->
+            <section class="education-cta">
+                <div class="cta-content">
+                    <h2 class="cta-title">Boost Your Security Knowledge</h2>
+                    <p class="cta-text">Complete our educational resources and earn SecureEscrow Credits (ESC) that you can use for transaction fees or premium features.</p>
+                    <div class="cta-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">1,250+</div>
+                            <div class="stat-label">Educational Resources</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">500K+</div>
+                            <div class="stat-label">ESC Earned</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">98%</div>
+                            <div class="stat-label">User Satisfaction</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg">Explore All Resources</button>
+                </div>
+                <div class="cta-image">
+                    <img src="assets/education-cta.png" alt="Learn and Earn">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/logo-white.svg" alt="SecureEscrow" class="footer-logo-img">
+                        <span>Secure<span class="gold-text">Escrow</span></span>
+                    </div>
+                    <p class="footer-about-text">
+                        SecureEscrow provides blockchain-powered escrow services with military-grade security for all your transactions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="marketplace.html" class="footer-link">Marketplace</a></li>
+                        <li><a href="education.html" class="footer-link">Education</a></li>
+                        <li><a href="disputes.html" class="footer-link">Disputes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> support@secureescrow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cyber Security Hub, Silicon Valley, CA</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2023 SecureEscrow. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quiz Modal -->
+    <div class="modal" id="quizModal">
+        <div class="modal-content large">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="quiz-header">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 20%;"></div>
+                    </div>
+                    <span>Question 1 of 5</span>
+                </div>
+                <div class="quiz-timer">
+                    <i class="fas fa-clock"></i> 1:45
+                </div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 class="quiz-question">Which of these is a common characteristic of a phishing email?</h2>
+                
+                <div class="quiz-options">
+                    <div class="option-card">
+                        <input type="radio" name="quizOption" id="option1">
+                        <label for="option1">
+                            <span class="option-letter">A</span>
+                            <span class="option-text">Urgent request for personal information</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-card">
+                        <input type="radio" name="quizOption" id="option2">
+                        <label for="option2">
+                            <span class="option-letter">B</span>
+                            <span class="option-text">Misspelled words and poor grammar</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-card">
+                        <input type="radio" name="quizOption" id="option3">
+                        <label for="option3">
+                            <span class="option-letter">C</span>
+                            <span class="option-text">Suspicious sender email address</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-card">
+                        <input type="radio" name="quizOption" id="option4">
+                        <label for="option4">
+                            <span class="option-letter">D</span>
+                            <span class="option-text">All of the above</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quiz-footer">
+                <button class="btn btn-outline">Skip Question</button>
+                <button class="btn btn-primary">Submit Answer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earn Reward Modal -->
+    <div class="modal" id="rewardModal">
+        <div class="modal-content small">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="reward-content">
+                <div class="reward-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 class="reward-title">Congratulations!</h2>
+                <p class="reward-text">You've earned <span class="gold-text">10 ESC</span> by completing this educational resource.</p>
+                <div class="reward-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Added to your account:</span>
+                        <span class="detail-value">10 ESC</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">New balance:</span>
+                        <span class="detail-value">125 ESC</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block">Continue Learning</button>
+                <button class="btn btn-outline btn-block">View Balance</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/education.js"></script>
+</body>
+</html>
